@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="preconnect" href="https://scripts.sirv.com" crossorigin />
+    <link rel="preconnect" href="https://listyara.sirv.com" crossorigin />
+    <link rel="dns-prefetch" href="https://scripts.sirv.com" />
+    <link rel="dns-prefetch" href="https://listyara.sirv.com" />
+
+    <title>Holding</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="loop" class="videoContainer">
+        <video
+          id="loopvideo"
+          class="loopvideo"
+          src="assets/loop.mp4"
+          playsinline
+          muted
+          autoplay
+          loop
+        ></video>
+      </div>
+
+      <div id="mainButtons" class="show">
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <button id="compactFP_button" class="button">
+              Compact FootPrint
+            </button>
+          </div>
+        </div>
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <button id="fullscreen_button" class="button">
+              <i
+                id="expand"
+                class="fa-solid fa-up-right-and-down-left-from-center"
+              ></i>
+              <i
+                id="contract"
+                class="fa-solid fa-down-left-and-up-right-to-center disabledb"
+              ></i>
+            </button>
+          </div>
+        </div>
+        <div class="centerContainer">
+          <div class="svgContainer">
+            <svg id="compactFP_line_svg" class="svg" width="100%" height="100%">
+              <line x1="23%" y1="17%" x2="33%" y2="20%" stroke="#f04923" />
+              <circle
+                class="svgDot"
+                id="compactFP_circle"
+                cx="33%"
+                cy="20%"
+                r="6px"
+                fill="#f04923"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <button id="remoteAC_button" class="button">
+              Remote Access Capability
+            </button>
+          </div>
+        </div>
+        <div class="centerContainer">
+          <div class="svgContainer">
+            <svg id="remoteAC_line_svg" class="svg" width="100%" height="100%">
+              <line x1="48.3%" y1="7%" x2="57%" y2="47%" stroke="#f04923" />
+              <circle
+                id="remoteAC_circle"
+                class="svgDot"
+                cx="57%"
+                cy="47%"
+                r="6px"
+                fill="#f04923"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <button id="quickC_button" class="button">Quick Changeover</button>
+          </div>
+        </div>
+        <div class="centerContainer">
+          <div class="svgContainer">
+            <svg id="quickC_line_svg" class="svg" width="100%" height="100%">
+              <line
+                x1="65.1%"
+                y1="12.5%"
+                x2="60.5%"
+                y2="45%"
+                stroke="#f04923"
+              />
+              <circle
+                id="quickC_circle"
+                class="svgDot"
+                cx="60.5%"
+                cy="45%"
+                r="6px"
+                fill="#f04923"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <button id="easilyAGP_button" class="button">
+              Easily Accessible Grace Port
+            </button>
+          </div>
+        </div>
+
+        <div class="centerContainer">
+          <div class="svgContainer">
+            <svg id="easilyAGP_line_svg" class="svg" width="100%" height="100%">
+              <line x1="78%" y1="39%" x2="67.2%" y2="55%" stroke="#f04923" />
+              <circle
+                class="svgDot"
+                id="easilyAGP_circle"
+                cx="67.2%"
+                cy="55%"
+                r="6px"
+                fill="#f04923"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <button id="fourCIDO_button" class="button">
+              Four Case Infeed Direction Options
+            </button>
+          </div>
+        </div>
+
+        <div class="centerContainer">
+          <div class="svgContainer">
+            <svg id="fourCIDO_line_svg" class="svg" width="100%" height="100%">
+              <line x1="71.3%" y1="68.5%" x2="65%" y2="61%" stroke="#f04923" />
+              <circle
+                id="fourCIDO_circle"
+                class="svgDot"
+                cx="65%"
+                cy="61%"
+                r="6px"
+                fill="#f04923"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <button id="maximumU_button" class="button">Maximum Uptime</button>
+          </div>
+        </div>
+
+        <div class="centerContainer">
+          <div class="svgContainer">
+            <svg id="maximumU_line_svg" class="svg" width="100%" height="100%">
+              <line x1="60%" y1="80%" x2="52%" y2="48%" stroke="#f04923" />
+              <circle
+                id="maximumU_circle"
+                class="svgDot"
+                cx="52%"
+                cy="48%"
+                r="6px"
+                fill="#f04923"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <button id="quickS_button" class="button">Quick Start Up</button>
+          </div>
+        </div>
+
+        <div class="centerContainer">
+          <div class="svgContainer">
+            <svg id="quickS_line_svg" class="svg" width="100%" height="100%">
+              <line x1="17%" y1="79.6%" x2="25%" y2="75%" stroke="#f04923" />
+              <circle
+                id="quickS_circle"
+                class="svgDot"
+                cx="25%"
+                cy="75%"
+                r="6px"
+                fill="#f04923"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="centerContainer">
+          <div class="buttonContainer">
+            <div class="viewR_container">
+              <button id="viewR_button" class="viewR_a">View Rotation</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="showCont" class="textContainer hidden short-vanish"></div>
+      <div class="warning">
+        <div class="modal">
+          <i class="fa-solid fa-circle-exclamation warnIcon"></i>
+          <span class="warningText"></span>
+        </div>
+      </div>
+      <div class="alertdiv">
+        <div class="modalalert"><span id='close' class="x">&#10006</span>
+          <i class="fa-solid fa-circle-exclamation alertIcon"></i>
+          
+          <span class="alertText">
+           Using this website on a Chrome web browser is recommended
+          </span>
+        </div>
+      </div>
+      <div class="loader">
+        <i  class="fa-solid fa-spinner loadingIcon"></i>
+      </div>
+      <div class="initial"></div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@svgdotjs/svg.js@3.0/dist/svg.min.js"></script>
+  <script src="https://scripts.sirv.com/sirv.js"></script>
+  <script src="js/main.js"></script>
+</html>

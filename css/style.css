@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+}
+
+.loader {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: -200;
+}
+.loadingIcon {
+  color: #ff4500;
+  font-size: 5rem;
+  animation: spin 2s linear infinite;
+}
+
+.mainButtons {
+  opacity: 0;
+}
+.initial {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+}
+body {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.viewR_a {
+  position: relative;
+  width: fit-content;
+  height: auto;
+  border: none;
+  color: white;
+  background-color: #ff4500;
+  cursor: pointer;
+  z-index: 2;
+  overflow: hidden;
+  padding: 0.4rem 1.5rem;
+  margin-bottom: 1rem;
+  font-size: calc(5px + (14 - 5) * ((100vw - 320px) / (1440 - 320)));
+  pointer-events: all;
+}
+
+.centerContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#centerContainer_backButton {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.buttonContainer {
+  position: relative;
+}
+.svgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.videoContainer > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.disabled > div > div > button {
+  pointer-events: none;
+}
+.disabledb {
+  display: none !important;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+*::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+video::slotted::-webkit-media-controls-container {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  -webkit-appearance: none !important;
+}
+
+.button {
+  position: absolute;
+  border: none;
+  padding: 0.4rem 1rem;
+  color: white;
+  background-color: #ff4500;
+  cursor: pointer;
+  z-index: 2;
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.Sirv {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#compactFP_button {
+  right: 76%;
+  top: 15%;
+}
+#fullscreen_button {
+  right: 1%;
+  top: 5%;
+}
+#remoteAC_button {
+  right: 51.5%;
+  top: 6%;
+}
+#quickC_button {
+  left: 65%;
+  top: 11%;
+}
+#easilyAGP_button {
+  left: 77%;
+  top: 38%;
+}
+#fourCIDO_button {
+  left: 71%;
+  top: 66%;
+}
+#maximumU_button {
+  left: 60%;
+  top: 78%;
+}
+#quickS_button {
+  left: 8%;
+  top: 77%;
+}
+#test {
+  left: 8%;
+  top: 50%;
+}
+.viewR_container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+.back::before,
+.button::before,
+.backButton::before,
+.label::before,
+.viewR_a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    35deg,
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0),
+    rgb(255, 255, 255),
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0),
+    rgba(255, 0, 0, 0)
+  );
+  animation: gloss 1s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.svgDot {
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  -webkit-animation: morph 1s ease-in-out infinite;
+  -moz-animation: morph 1s ease-in-out infinite;
+  -o-animation: morph 1s ease-in-out infinite;
+  animation: morph 1s ease-in-out infinite;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+.textContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  z-index: 1;
+  top: 6rem;
+  left: 6rem;
+}
+.labelCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #ff4500;
+  padding: 0.5rem 1.5rem;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+}
+
+.pCont {
+  padding: 1rem 1.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  max-width: 27%;
+}
+p {
+  font-weight: 500;
+  font-size: calc(8px + (18 - 8) * ((100vw - 320px) / (1440 - 320)));
+}
+.label {
+  font-weight: 600;
+  font-size: calc(8px + (18 - 8) * ((100vw - 320px) / (1440 - 320)));
+}
+
+#remoteAC_p {
+  max-width: 33%;
+}
+#quickC_p {
+  max-width: 40%;
+}
+#easilyAGP_p {
+  max-width: 40%;
+}
+#easilyAGP_p {
+  max-width: 40%;
+}
+#fourCIDO_p {
+  max-width: 28%;
+}
+#maximumU_p {
+  max-width: 29%;
+}
+#quickS_p {
+  max-width: 32%;
+}
+
+.backButton {
+  position: relative;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  background-color: #ff4500;
+  cursor: pointer;
+  z-index: 50;
+  overflow: hidden;
+  font-size: calc(8px + (14 - 8) * ((100vw - 320px) / (1440 - 320)));
+}
+
+.short-vanish {
+  animation: vanish 0.5s ease-in-out forwards;
+}
+.show {
+  animation: show 0.5s ease-in-out forwards;
+  pointer-events: all;
+}
+
+.warning {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(239, 20%, 10%, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -100;
+  opacity: 0;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 3rem;
+  border-radius: 2rem;
+  margin: 2rem;
+  text-align: center;
+}
+
+.warnIcon {
+  font-size: 3rem;
+  color: #ff4500;
+}
+
+.alertdiv {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(239, 20%, 10%, 0.82);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 1;
+  transition: 1s all ease-in-out;
+}
+.x {
+  position: absolute;
+  right: 2rem;
+  top: 1.5rem;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.modalalert {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  padding: 3rem;
+  border-radius: 2rem;
+  transition: 1s all ease-in-out;
+}
+.modalclosed {
+  transform: scale(0);
+}
+.alertIcon {
+  justify-self: center;
+  align-self: center;
+  font-size: 3rem;
+  color: #ff4500;
+}
+
+@media (max-height: 550px) and (orientation: landscape) {
+  #fourCIDO_p {
+    max-width: 33%;
+  }
+  #fourCIDO_label {
+    max-width: 27%;
+  }
+  p {
+    font-size: calc(6px + (14 - 6) * ((100vw - 320px) / (1440 - 320)));
+  }
+  .label {
+    font-size: calc(6px + (14 - 6) * ((100vw - 320px) / (1440 - 320)));
+  }
+  .backButton {
+    font-size: calc(8px + (12 - 8) * ((100vw - 320px) / (1440 - 320)));
+  }
+}
+
+@keyframes vanish {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes morph {
+  0% {
+    r: 3px;
+  }
+  50% {
+    r: 6px;
+  }
+  100% {
+    r: 3px;
+  }
+}
+@keyframes gloss {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
