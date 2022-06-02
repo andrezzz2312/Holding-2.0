@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 *,
 ::after,
@@ -10,7 +10,7 @@
 
 * {
   font-family: 'Roboto', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .loader {
@@ -49,18 +49,18 @@ body {
 
 .viewR_a {
   position: relative;
-  width: fit-content;
   height: auto;
   border: none;
   color: white;
-  background-color: #ff4500;
+  background-color: #4c4c4c;
   cursor: pointer;
   z-index: 2;
   overflow: hidden;
-  padding: 0.4rem 1.5rem;
+  padding: 0.7rem 1rem;
   margin-bottom: 1rem;
   font-size: calc(5px + (14 - 5) * ((100vw - 320px) / (1440 - 320)));
   pointer-events: all;
+  border-radius: 0.4rem;
 }
 
 .centerContainer {
@@ -123,14 +123,17 @@ video::slotted::-webkit-media-controls-container {
 }
 
 .button {
+  border-radius: 0.4rem;
   position: absolute;
   border: none;
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1rem;
   color: white;
   background-color: #ff4500;
   cursor: pointer;
   z-index: 2;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  animation: morph 2s ease-in-out infinite;
 }
 a {
   text-decoration: none;
@@ -146,36 +149,36 @@ a {
 }
 
 #compactFP_button {
-  right: 76%;
-  top: 15%;
+  right: 77%;
+  top: 8%;
 }
 #fullscreen_button {
   right: 1%;
   top: 5%;
 }
-#remoteAC_button {
-  right: 51.5%;
-  top: 6%;
-}
-#quickC_button {
-  left: 65%;
+#intuitiveH_button {
+  left: 64.2%;
   top: 11%;
+}
+#easyC_button {
+  right: 51%;
+  top: 9%;
 }
 #easilyAGP_button {
   left: 77%;
   top: 38%;
 }
-#fourCIDO_button {
-  left: 71%;
-  top: 66%;
+#flexibleI_button {
+  left: 73.5%;
+  top: 74%;
 }
 #maximumU_button {
-  left: 60%;
-  top: 78%;
+  left: 57.2%;
+  top: 81%;
 }
 #quickS_button {
-  left: 8%;
-  top: 77%;
+  right: 79.5%;
+  top: 82.7%;
 }
 #test {
   left: 8%;
@@ -220,10 +223,10 @@ a {
   position: absolute;
   left: 30%;
   top: 30%;
-  -webkit-animation: morph 1s ease-in-out infinite;
+  /* -webkit-animation: morph 1s ease-in-out infinite;
   -moz-animation: morph 1s ease-in-out infinite;
   -o-animation: morph 1s ease-in-out infinite;
-  animation: morph 1s ease-in-out infinite;
+  animation: morph 1s ease-in-out infinite; */
 }
 
 .hidden {
@@ -261,15 +264,17 @@ a {
   left: 6rem;
 }
 .labelCont {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+
   background-color: #ff4500;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0.7rem;
   overflow: hidden;
   text-align: center;
   color: white;
+  border-radius: 0.8rem;
 }
 
 .pCont {
@@ -283,14 +288,15 @@ p {
   font-size: calc(8px + (18 - 8) * ((100vw - 320px) / (1440 - 320)));
 }
 .label {
-  font-weight: 600;
-  font-size: calc(8px + (18 - 8) * ((100vw - 320px) / (1440 - 320)));
+  font-weight: 700;
+
+  font-size: calc(15px + (25 - 15) * ((100vw - 320px) / (1440 - 320)));
 }
 
-#remoteAC_p {
+#intuitiveH_p {
   max-width: 33%;
 }
-#quickC_p {
+#easyC_p {
   max-width: 40%;
 }
 #easilyAGP_p {
@@ -299,7 +305,7 @@ p {
 #easilyAGP_p {
   max-width: 40%;
 }
-#fourCIDO_p {
+#flexibleI_p {
   max-width: 28%;
 }
 #maximumU_p {
@@ -403,10 +409,10 @@ p {
 }
 
 @media (max-height: 550px) and (orientation: landscape) {
-  #fourCIDO_p {
+  #flexibleI_p {
     max-width: 33%;
   }
-  #fourCIDO_label {
+  #flexibleI_label {
     max-width: 27%;
   }
   p {
@@ -440,23 +446,23 @@ p {
 
 @keyframes morph {
   0% {
-    r: 3px;
+    transform: scale(1);
   }
   50% {
-    r: 6px;
+    transform: scale(1.1);
   }
   100% {
-    r: 3px;
+    transform: scale(1);
   }
 }
-@keyframes gloss {
+/* @keyframes gloss {
   0% {
     left: -100%;
   }
   100% {
     left: 100%;
   }
-}
+} */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
