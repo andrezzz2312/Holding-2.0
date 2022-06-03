@@ -172,7 +172,7 @@ function createContent(
     setTimeout(() => {
       console.log(labelCont.offsetWidth)
       pCont.style.width = labelCont.offsetWidth + 'px'
-    }, 100)
+    }, 50)
     pCont.setAttribute('id', pContentId ? pContentId : 'a')
     pCont.appendChild(bullet)
     paragraph = document.createElement('p')

@@ -270,7 +270,7 @@ a {
   align-items: center;
 
   background-color: #ff4500;
-  padding: 1.5% 8% 1.5% 4vh;
+  padding: 1.5% 7.5% 1.5% 4vh;
   overflow: hidden;
   text-align: start;
   color: white;
@@ -287,6 +287,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-start;
   gap: 1vh;
 }
 .bullet {
