@@ -154,28 +154,33 @@ function createContent(
   textContent.appendChild(labelCont)
   labelCont.appendChild(label)
 
-  const pCont = document.createElement('div')
-  pCont.classList.add('pCont')
-  setTimeout(() => {
-    console.log(labelCont.offsetWidth)
-    pCont.style.width = labelCont.offsetWidth + 'px'
-  }, 500)
-
-  pCont.setAttribute('id', pContentId ? pContentId : 'a')
-
-  paragraph = document.createElement('p')
-  paragraph.textContent = pContent
-  pCont.appendChild(paragraph)
-  textContent.appendChild(pCont)
   fontvar = `calc(11px + (23 - 11) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
   // let fontvar = `calc(8px + (18 - 8) * ((${
   //   containVideoWidth + 'px'
   // } - 320px) / (1440 - 320)))`
-  paragraph.style.fontSize = fontvar
 
   label.style.fontSize = fontvar
+  if (pContent) {
+    const pCont = document.createElement('div')
+    pCont.classList.add('pCont')
+    const bullet = document.createElement('div')
+    bullet.classList.add('bullet')
+    bullet.style.fontSize = fontvar
+    bullet.innerHTML = '&bull;'
+    setTimeout(() => {
+      console.log(labelCont.offsetWidth)
+      pCont.style.width = labelCont.offsetWidth + 'px'
+    }, 100)
+    pCont.setAttribute('id', pContentId ? pContentId : 'a')
+    pCont.appendChild(bullet)
+    paragraph = document.createElement('p')
+    paragraph.textContent = pContent
+    pCont.appendChild(paragraph)
+    textContent.appendChild(pCont)
+    paragraph.style.fontSize = fontvar
+  }
 
   showCont.appendChild(textContent)
 

@@ -279,13 +279,19 @@ a {
 }
 
 .pCont {
-  padding: 2vh 4vh 3vh 4vh;
+  padding: 2vh 4vh 3vh 1.9vh;
   background-color: hsla(0, 0%, 35%, 90%);
   color: white;
   /* max-width: 27%; */
   border-radius: 0 0 1rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1vh;
 }
-
+.bullet {
+  color: #ff4500;
+}
 p {
   font-weight: 400;
 }
