@@ -19,12 +19,14 @@ let containVideoHeight = ''
 let video1check = false
 let video2check = false
 let video3check = false
+
 let x = window.matchMedia('(max-height: 550px)')
 const mainButtons = document.querySelector('#mainButtons')
 const showCont = document.querySelector('#showCont')
 const svgContainer = document.querySelectorAll('.svgContainer')
 const buttonContainer = document.querySelectorAll('.buttonContainer')
 const mainContainer = document.querySelector('.container')
+
 const loader = document.querySelector('.loader')
 const viewR_button = document.querySelector('#viewR_button')
 const initial = document.querySelector('.initial')
@@ -128,7 +130,8 @@ function createContent(
   pContent,
   pContentId,
   textId,
-  labelId
+  labelId,
+  labelPad
 ) {
   const centerContainerMade = document.createElement('div')
   centerContainerMade.classList.add('centerContainer')
@@ -150,28 +153,29 @@ function createContent(
 
   label = document.createElement('label')
   label.classList.add('label')
-  label.textContent = labelTitle
+  label.innerHTML = labelTitle
   textContent.appendChild(labelCont)
   labelCont.appendChild(label)
 
   fontvar = `calc(11px + (23 - 11) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
-  // let fontvar = `calc(8px + (18 - 8) * ((${
-  //   containVideoWidth + 'px'
-  // } - 320px) / (1440 - 320)))`
 
   label.style.fontSize = fontvar
+
   if (pContent) {
     const pCont = document.createElement('div')
     pCont.classList.add('pCont')
     const bullet = document.createElement('div')
+    if (labelPad) {
+      labelCont.style.padding = labelPad
+    }
     bullet.classList.add('bullet')
     bullet.style.fontSize = fontvar
     bullet.innerHTML = '&bull;'
     setTimeout(() => {
       console.log(labelCont.offsetWidth)
-      pCont.style.width = labelCont.offsetWidth + 'px'
+      textContent.style.width = labelCont.offsetWidth + 'px'
     }, 50)
     pCont.setAttribute('id', pContentId ? pContentId : 'a')
     pCont.appendChild(bullet)
@@ -179,6 +183,9 @@ function createContent(
     paragraph.textContent = pContent
     pCont.appendChild(paragraph)
     textContent.appendChild(pCont)
+    fontvar = `calc(8px + (20 - 8) * ((${
+      containVideoWidth + 'px'
+    } - 320px) / (1440 - 320)))`
     paragraph.style.fontSize = fontvar
   }
 
@@ -413,7 +420,8 @@ compactFP_button.addEventListener('click', function (e) {
       textContainer.remove()
 
       backButtonContainer.remove()
-      createContent('10%', '17%', 'Compact Footprint')
+      createContent('15%', '45%', 'Compact Footprint')
+      labelCont.style.borderRadius = '0.8rem'
       label.style.borderRadius = '0.8rem'
       createBackButton()
     }
@@ -483,11 +491,14 @@ intuitiveH_button.addEventListener('click', function (e) {
   }
 
   createContent(
-    '12%',
-    '24%',
-    'Remote Access Capability',
-    `Allows Pearson's support team on-demand\naccess to the equipment's PLC and HMI\nthrough a secure VPN connection via an eWON\nrouter ISECOM STAR and ISO 27001 certified\nto support emergency troubleshooting and\nreduce on-site visits`,
-    'intuitiveH_p'
+    '20%',
+    '28%',
+    `Intuitive HMI with\nPallet Configuration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`,
+    `Easily create, modify, copy or clear recipes`,
+    'intuitiveH_p',
+    '',
+    '',
+    '3vh 4vh 3vh 4vh'
   )
 
   createBackButton()
@@ -495,7 +506,7 @@ intuitiveH_button.addEventListener('click', function (e) {
   window.addEventListener('resize', function (e) {
     if (showCont.hasChildNodes()) {
       const textContainer = document.querySelector('#centerContainer_text')
-      const svgContainer = document.querySelector('#centerContainer_svg')
+
       const backButtonContainer = document.querySelector(
         '#centerContainer_backButton'
       )
@@ -505,9 +516,12 @@ intuitiveH_button.addEventListener('click', function (e) {
       createContent(
         '12%',
         '24%',
-        'Remote Access Capability',
-        `Allows Pearson's support team on-demand\naccess to the equipment's PLC and HMI\nthrough a secure VPN connection via an eWON\nrouter ISECOM STAR and ISO 27001 certified\nto support emergency troubleshooting and\nreduce on-site visits`,
-        'intuitiveH_p'
+        `Intuitive aHMI with\nPallet Configuration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`,
+        `Easily create, modify, copy or clear recipes`,
+        'intuitiveH_p',
+        '',
+        '',
+        '3vh 4vh 3vh 4vh'
       )
 
       createBackButton()
@@ -578,15 +592,18 @@ easyC_button.addEventListener('click', function (e) {
     createContent(
       '12%',
       '20%',
-      'Easy Changeover',
+      'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       `Manual tool changeover takes about one minute`,
-      'easyC_p'
+      'easyC_p',
+      '',
+      '',
+      '3vh 4vh 3vh 4vh'
     )
-
+    // padding: 3vh 4vh 3vh 4vh;
     window.addEventListener('resize', function (e) {
       if (showCont.hasChildNodes()) {
         const textContainer = document.querySelector('#centerContainer_text')
-        const svgContainer = document.querySelector('#centerContainer_svg')
+
         const backButtonContainer = document.querySelector(
           '#centerContainer_backButton'
         )
@@ -596,11 +613,14 @@ easyC_button.addEventListener('click', function (e) {
         createContent(
           '12%',
           '20%',
-          'Easy Changeover',
+          'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
           `Manual tool changeover takes about one minute`,
-          'easyC_p'
+          'easyC_p',
+          '',
+          '',
+          '3vh 4vh 3vh 4vh'
         )
-
+        // padding: 3vh 4vh 3vh 4vh;
         createBackButton()
       }
     })
@@ -608,32 +628,13 @@ easyC_button.addEventListener('click', function (e) {
     createContent(
       '12%',
       '30%',
-      'Easy Changeover',
+      'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       `Manual tool changeover takes about one minute`,
-      'easyC_p'
+      'easyC_p',
+      '',
+      '',
+      '3vh 4vh 3vh 4vh'
     )
-
-    window.addEventListener('resize', function (e) {
-      if (showCont.hasChildNodes()) {
-        const textContainer = document.querySelector('#centerContainer_text')
-        const svgContainer = document.querySelector('#centerContainer_svg')
-        const backButtonContainer = document.querySelector(
-          '#centerContainer_backButton'
-        )
-        textContainer.remove()
-
-        backButtonContainer.remove()
-        createContent(
-          '12%',
-          '30%',
-          'Easy Changeover',
-          `Manual tool changeover takes about one minute`,
-          'easyC_p'
-        )
-
-        createBackButton()
-      }
-    })
   }
 
   createBackButton()
@@ -701,11 +702,12 @@ flexibleI_button.addEventListener('click', function (e) {
   createContent(
     '65%',
     '40%',
-    'Four Case Infeed Direction Options',
-    `The modular configuration offers various infeed configurations to choose from to better accomodate your plant layout`,
+    'Flexible Infeed Direction',
+    `Choose the right configuration for your plant layout`,
     'flexibleI_p',
     'flexibleI_text',
-    'flexibleI_label'
+    'flexibleI_label',
+    20
   )
 
   createBackButton()
@@ -713,7 +715,7 @@ flexibleI_button.addEventListener('click', function (e) {
   window.addEventListener('resize', function (e) {
     if (showCont.hasChildNodes()) {
       const textContainer = document.querySelector('#centerContainer_text')
-      const svgContainer = document.querySelector('#centerContainer_svg')
+
       const backButtonContainer = document.querySelector(
         '#centerContainer_backButton'
       )
@@ -723,11 +725,12 @@ flexibleI_button.addEventListener('click', function (e) {
       createContent(
         '65%',
         '40%',
-        'Four Case Infeed Direction Options',
-        `The modular configuration offers various infeed configurations to choose from to better accomodate your plant layout`,
+        'Flexible Infeed Direction',
+        `Choose the right configuration for your plant layout`,
         'flexibleI_p',
         'flexibleI_text',
-        'flexibleI_label'
+        'flexibleI_label',
+        20
       )
 
       createBackButton()
@@ -809,7 +812,7 @@ maximumU_button.addEventListener('click', function (e) {
   window.addEventListener('resize', function (e) {
     if (showCont.hasChildNodes()) {
       const textContainer = document.querySelector('#centerContainer_text')
-      const svgContainer = document.querySelector('#centerContainer_svg')
+
       const backButtonContainer = document.querySelector(
         '#centerContainer_backButton'
       )
@@ -894,7 +897,7 @@ quickS_button.addEventListener('click', function (e) {
     window.addEventListener('resize', function (e) {
       if (showCont.hasChildNodes()) {
         const textContainer = document.querySelector('#centerContainer_text')
-        const svgContainer = document.querySelector('#centerContainer_svg')
+
         const backButtonContainer = document.querySelector(
           '#centerContainer_backButton'
         )
@@ -939,7 +942,7 @@ quickS_button.addEventListener('click', function (e) {
     window.addEventListener('resize', function (e) {
       if (showCont.hasChildNodes()) {
         const textContainer = document.querySelector('#centerContainer_text')
-        const svgContainer = document.querySelector('#centerContainer_svg')
+
         const backButtonContainer = document.querySelector(
           '#centerContainer_backButton'
         )

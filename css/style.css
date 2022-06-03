@@ -56,7 +56,7 @@ body {
   cursor: pointer;
   z-index: 2;
   overflow: hidden;
-  padding: 0.5% 0.8%;
+  padding: 0.8% 0.8%;
   margin-bottom: 1rem;
   font-size: calc(5px + (17 - 5) * ((100vw - 320px) / (1440 - 320)));
   pointer-events: all;
@@ -74,17 +74,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-#centerContainer_backButton {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
+
 .buttonContainer {
   position: relative;
 }
@@ -193,33 +183,6 @@ a {
   height: 100%;
 }
 
-.back::before,
-.button::before,
-.backButton::before,
-.label::before,
-.viewR_a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    35deg,
-    rgba(255, 0, 0, 0),
-    rgba(255, 0, 0, 0),
-    rgba(255, 0, 0, 0),
-    rgba(255, 0, 0, 0),
-    rgb(255, 255, 255),
-    rgba(255, 0, 0, 0),
-    rgba(255, 0, 0, 0),
-    rgba(255, 0, 0, 0),
-    rgba(255, 0, 0, 0)
-  );
-  animation: gloss 1s ease-in-out infinite;
-  overflow: hidden;
-}
-
 .svgDot {
   position: absolute;
   left: 30%;
@@ -247,30 +210,32 @@ a {
   height: 100%;
   width: 100%;
 }
+.showCont {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
 .textContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .text {
   position: relative;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  display: inline-grid;
+
+  /* width: fit-content; */
   z-index: 1;
   top: 6rem;
   left: 6rem;
 }
 .labelCont {
+  white-space: pre-wrap;
   position: relative;
-  display: flex;
-  align-items: center;
-
+  display: grid;
+  width: max-content;
   background-color: #ff4500;
-  padding: 1.5% 7.5% 1.5% 4vh;
+
+  /* padding: 1.5vh; */
   overflow: hidden;
   text-align: start;
   color: white;
@@ -282,15 +247,14 @@ a {
   padding: 2vh 4vh 3vh 1.9vh;
   background-color: hsla(0, 0%, 35%, 90%);
   color: white;
-  /* max-width: 27%; */
+
   border-radius: 0 0 1rem 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1vh;
+  gap: 0.5vh;
 }
 .bullet {
+  margin-left: 0.5vh;
   color: #ff4500;
 }
 p {
@@ -298,28 +262,6 @@ p {
 }
 .label {
   font-weight: 700;
-}
-
-#intuitiveH_p {
-  max-width: 33%;
-}
-#easyC_p {
-  max-width: 40%;
-}
-#easilyAGP_p {
-  max-width: 40%;
-}
-#easilyAGP_p {
-  max-width: 40%;
-}
-#flexibleI_p {
-  max-width: 28%;
-}
-#maximumU_p {
-  max-width: 29%;
-}
-#quickS_p {
-  max-width: 32%;
 }
 
 .backButton {
@@ -336,6 +278,7 @@ p {
 
 .short-vanish {
   animation: vanish 0.5s ease-in-out forwards;
+  pointer-events: none;
 }
 .show {
   animation: show 0.5s ease-in-out forwards;
