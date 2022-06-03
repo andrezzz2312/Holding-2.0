@@ -7,6 +7,7 @@ let video2 = ''
 let video3 = ''
 let textContent = ''
 let label = ''
+let labelCont = ''
 let paragraph = ''
 let line = ''
 let svg1 = ''
@@ -143,34 +144,45 @@ function createContent(
   textContent.style.left = textLeft
   textContent.style.top = textTop
 
-  const labelCont = document.createElement('div')
+  labelCont = document.createElement('div')
   labelCont.setAttribute('id', labelId ? labelId : '')
   labelCont.classList.add('labelCont')
-
-  if (pContent) {
-    const pCont = document.createElement('div')
-    pCont.classList.add('pCont')
-    pCont.setAttribute('id', pContentId ? pContentId : 'a')
-    textContent.appendChild(pCont)
-    pCont.appendChild(paragraph)
-  }
-
-  showCont.appendChild(textContent)
 
   label = document.createElement('label')
   label.classList.add('label')
   label.textContent = labelTitle
+  textContent.appendChild(labelCont)
+  labelCont.appendChild(label)
+
+  const pCont = document.createElement('div')
+  pCont.classList.add('pCont')
+  setTimeout(() => {
+    console.log(labelCont.offsetWidth)
+    pCont.style.width = labelCont.offsetWidth + 'px'
+  }, 500)
+
+  pCont.setAttribute('id', pContentId ? pContentId : 'a')
 
   paragraph = document.createElement('p')
   paragraph.textContent = pContent
+  pCont.appendChild(paragraph)
+  textContent.appendChild(pCont)
+  fontvar = `calc(11px + (23 - 11) * ((${
+    containVideoWidth + 'px'
+  } - 320px) / (1440 - 320)))`
+  // let fontvar = `calc(8px + (18 - 8) * ((${
+  //   containVideoWidth + 'px'
+  // } - 320px) / (1440 - 320)))`
+  paragraph.style.fontSize = fontvar
+
+  label.style.fontSize = fontvar
+
+  showCont.appendChild(textContent)
 
   showCont.appendChild(centerContainerMade)
 
   centerContainerMade.appendChild(textContainerMade)
   textContainerMade.appendChild(textContent)
-  textContent.appendChild(labelCont)
-
-  labelCont.appendChild(label)
 }
 
 // Create the svgs for the showCont div / 4 first parameters are the x and y points of the first and second point respectively, last 2 are the x and y points of the dot
@@ -178,15 +190,18 @@ function createContent(
 function setFontSizes() {
   const test = document.querySelectorAll('.button')
 
-  let fontvar = `calc(4px + (17 - 4) * ((${
+  let fontvar = `calc(9px + (20 - 9) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
 
   for (let i = 0; i < test.length; i++) {
     test[i].style.fontSize = fontvar
   }
+  let fontvarViewR = `calc(8px + (18 - 8) * ((${
+    containVideoWidth + 'px'
+  } - 320px) / (1440 - 320)))`
 
-  viewR_button.style.fontSize = fontvar
+  viewR_button.style.fontSize = fontvarViewR
 }
 
 function createBackButton() {
@@ -198,7 +213,7 @@ function createBackButton() {
   buttonContainerMade.style.width = containVideoWidth + 'px'
   buttonContainerMade.style.height = containVideoHeight + 'px'
   backButton = document.createElement('button')
-  let fontvar = `calc(4px + (17 - 4) * ((${
+  let fontvar = `calc(6px + (16 - 6) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
   backButton.style.fontSize = fontvar
@@ -380,26 +395,21 @@ compactFP_button.addEventListener('click', function (e) {
   }
 
   createContent('15%', '45%', 'Compact Footprint')
-
+  labelCont.style.borderRadius = '0.8rem'
   createBackButton()
 
   window.addEventListener('resize', function (e) {
     if (showCont.hasChildNodes()) {
       const textContainer = document.querySelector('#centerContainer_text')
-      const svgContainer = document.querySelector('#centerContainer_svg')
+
       const backButtonContainer = document.querySelector(
         '#centerContainer_backButton'
       )
       textContainer.remove()
-      svgContainer.remove()
-      backButtonContainer.remove()
-      createContent(
-        '10%',
-        '17%',
-        'Compact Footprint',
-        'Smallest, fully contained, palletizing unit\nfor a single pallet and load/unload\nfunction utlizing a pallet jack or forklift.'
-      )
 
+      backButtonContainer.remove()
+      createContent('10%', '17%', 'Compact Footprint')
+      label.style.borderRadius = '0.8rem'
       createBackButton()
     }
   })
@@ -485,7 +495,7 @@ intuitiveH_button.addEventListener('click', function (e) {
         '#centerContainer_backButton'
       )
       textContainer.remove()
-      svgContainer.remove()
+
       backButtonContainer.remove()
       createContent(
         '12%',
@@ -544,7 +554,6 @@ intuitiveH_button.addEventListener('click', function (e) {
 })
 
 easyC_button.addEventListener('click', function (e) {
-  console.time('test3')
   HideShowMainButtons()
 
   if (x.matches) {
@@ -564,8 +573,8 @@ easyC_button.addEventListener('click', function (e) {
     createContent(
       '12%',
       '20%',
-      'Quick Changeover',
-      `The easy-to use pallet configuration tool\nallows to quickly create, modify, copy or\nclear new pattern recipes on the HMI or\nadjust parameters such as case or pallet\nheight, number of layers, pick/drop speeds\nor delays during production. A changeover\nusing a pre-programmed recipe can be\naccomplished in under 1min. To set up a\nnew recipe, trained technicians require\napproximately 5 min`,
+      'Easy Changeover',
+      `Manual tool changeover takes about one minute`,
       'easyC_p'
     )
 
@@ -577,13 +586,13 @@ easyC_button.addEventListener('click', function (e) {
           '#centerContainer_backButton'
         )
         textContainer.remove()
-        svgContainer.remove()
+
         backButtonContainer.remove()
         createContent(
           '12%',
           '20%',
-          'Quick Changeover',
-          `The easy-to use pallet configuration tool\nallows to quickly create, modify, copy or\nclear new pattern recipes on the HMI or\nadjust parameters such as case or pallet\nheight, number of layers, pick/drop speeds\nor delays during production. A changeover\nusing a pre-programmed recipe can be\naccomplished in under 1min. To set up a\nnew recipe, trained technicians require\napproximately 5 min`,
+          'Easy Changeover',
+          `Manual tool changeover takes about one minute`,
           'easyC_p'
         )
 
@@ -594,8 +603,8 @@ easyC_button.addEventListener('click', function (e) {
     createContent(
       '12%',
       '30%',
-      'Quick Changeover',
-      `The easy-to use pallet configuration tool\nallows to quickly create, modify, copy or\nclear new pattern recipes on the HMI or\nadjust parameters such as case or pallet\nheight, number of layers, pick/drop speeds\nor delays during production. A changeover\nusing a pre-programmed recipe can be\naccomplished in under 1min. To set up a\nnew recipe, trained technicians require\napproximately 5 min`,
+      'Easy Changeover',
+      `Manual tool changeover takes about one minute`,
       'easyC_p'
     )
 
@@ -607,13 +616,13 @@ easyC_button.addEventListener('click', function (e) {
           '#centerContainer_backButton'
         )
         textContainer.remove()
-        svgContainer.remove()
+
         backButtonContainer.remove()
         createContent(
           '12%',
           '30%',
-          'Quick Changeover',
-          `The easy-to use pallet configuration tool\nallows to quickly create, modify, copy or\nclear new pattern recipes on the HMI or\nadjust parameters such as case or pallet\nheight, number of layers, pick/drop speeds\nor delays during production. A changeover\nusing a pre-programmed recipe can be\naccomplished in under 1min. To set up a\nnew recipe, trained technicians require\napproximately 5 min`,
+          'Easy Changeover',
+          `Manual tool changeover takes about one minute`,
           'easyC_p'
         )
 
@@ -649,7 +658,6 @@ easyC_button.addEventListener('click', function (e) {
       }, 1000)
 
       if (video1check && video2check && video3check) {
-        console.timeEnd('test3')
         loader.classList.remove('show')
         loader.classList.add('short-vanish')
         loader.style.zIndex = '-200'
@@ -705,7 +713,7 @@ flexibleI_button.addEventListener('click', function (e) {
         '#centerContainer_backButton'
       )
       textContainer.remove()
-      svgContainer.remove()
+
       backButtonContainer.remove()
       createContent(
         '65%',
@@ -801,7 +809,7 @@ maximumU_button.addEventListener('click', function (e) {
         '#centerContainer_backButton'
       )
       textContainer.remove()
-      svgContainer.remove()
+
       backButtonContainer.remove()
       createContent(
         '58%',
@@ -886,7 +894,7 @@ quickS_button.addEventListener('click', function (e) {
           '#centerContainer_backButton'
         )
         textContainer.remove()
-        svgContainer.remove()
+
         backButtonContainer.remove()
         createContent(
           '7%',
@@ -931,7 +939,7 @@ quickS_button.addEventListener('click', function (e) {
           '#centerContainer_backButton'
         )
         textContainer.remove()
-        svgContainer.remove()
+
         backButtonContainer.remove()
         createContent(
           '8%',
@@ -969,7 +977,7 @@ quickS_button.addEventListener('click', function (e) {
   buttonContainerMade.style.width = containVideoWidth + 'px'
   buttonContainerMade.style.height = containVideoHeight + 'px'
   backButton = document.createElement('button')
-  let fontvar = `calc(4px + (17 - 4) * ((${
+  let fontvar = `calc(6px + (16 - 6) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
   backButton.style.fontSize = fontvar
@@ -1085,7 +1093,7 @@ viewR_button.addEventListener('click', function (e) {
     if (centerContainerMade.hasChildNodes()) {
       buttonContainerMade.style.width = containVideoWidth + 'px'
       buttonContainerMade.style.height = containVideoHeight + 'px'
-      let fontvar = `calc(4px + (17 - 4) * ((${
+      let fontvar = `calc(6px + (16 - 6) * ((${
         containVideoWidth + 'px'
       } - 320px) / (1440 - 320)))`
       backButton.style.fontSize = fontvar
