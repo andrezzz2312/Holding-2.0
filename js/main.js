@@ -357,6 +357,7 @@ loop.addEventListener('loadedmetadata', function (e) {
   containVideoWidth = getImgSizeInfo(loop).width
   containVideoHeight = getImgSizeInfo(loop).height
   setTimeout(() => {
+    console.log('fonts')
     setFontSizes()
   }, 100)
 
@@ -369,6 +370,7 @@ loop.addEventListener('loadedmetadata', function (e) {
 })
 
 if (loop.readyState >= 1) {
+  setFontSizes()
   containVideoWidth = getImgSizeInfo(loop).width
   containVideoHeight = getImgSizeInfo(loop).height
   ArreglarLineas()
