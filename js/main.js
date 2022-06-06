@@ -821,7 +821,6 @@ flexibleI_button.addEventListener('click', function (e) {
 })
 
 maximumU_button.addEventListener('click', function (e) {
-  console.time('test1')
   HideShowMainButtons()
 
   if (x.matches) {
@@ -849,7 +848,7 @@ maximumU_button.addEventListener('click', function (e) {
     '2vh 4vh 2vh 4vh',
     'Minimal maintenance requirements'
   )
-  animations()
+
   createBackButton()
 
   window.addEventListener('resize', function (e) {
@@ -873,7 +872,7 @@ maximumU_button.addEventListener('click', function (e) {
         '2vh 4vh 2vh 4vh',
         'Minimal maintenance requirements'
       )
-
+      animations()
       createBackButton()
     }
   })
@@ -904,7 +903,6 @@ maximumU_button.addEventListener('click', function (e) {
       }, 1000)
 
       if (video1check && video2check && video3check) {
-        console.timeEnd('test1')
         loader.classList.remove('show')
         loader.classList.add('short-vanish')
         loader.style.zIndex = '-200'
