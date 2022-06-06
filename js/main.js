@@ -132,7 +132,8 @@ function createContent(
   textId,
   labelId,
   labelPad,
-  pContent2
+  pContent2,
+  animationD
 ) {
   const centerContainerMade = document.createElement('div')
   centerContainerMade.classList.add('centerContainer')
@@ -149,12 +150,19 @@ function createContent(
   textContent.style.top = textTop
 
   labelCont = document.createElement('div')
+  labelCont.addEventListener('click', function (e) {
+    labelCont.classList.add('checkers')
+  })
   labelCont.setAttribute('id', labelId ? labelId : '')
   labelCont.classList.add('labelCont')
 
   label = document.createElement('label')
   label.classList.add('label')
   label.innerHTML = labelTitle
+
+  labelCont.style.animationDelay = animationD + 's'
+  label.style.animationDelay = animationD + 0.5 + 's'
+
   textContent.appendChild(labelCont)
   labelCont.appendChild(label)
 
@@ -180,6 +188,8 @@ function createContent(
     const list = document.createElement('ul')
     paragraph = document.createElement('li')
     paragraph.textContent = pContent
+    pCont.style.animationDelay = animationD + 1 + 's'
+    list.style.animationDelay = animationD + 1.5 + 's'
     list.appendChild(paragraph)
     fontvar = `calc(8px + (20 - 8) * ((${
       containVideoWidth + 'px'
@@ -190,6 +200,7 @@ function createContent(
       paragraph2.style.fontSize = fontvar
       list.appendChild(paragraph2)
     }
+
     pCont.appendChild(list)
     textContent.appendChild(pCont)
 
@@ -427,7 +438,18 @@ compactFP_button.addEventListener('click', function (e) {
       textContainer.remove()
 
       backButtonContainer.remove()
-      createContent('15%', '45%', 'Compact Footprint')
+      createContent(
+        '15%',
+        '45%',
+        'Compact Footprint',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        0
+      )
       labelCont.style.borderRadius = '0.8rem'
       label.style.borderRadius = '0.8rem'
       createBackButton()
@@ -528,7 +550,8 @@ intuitiveH_button.addEventListener('click', function (e) {
         'intuitiveH_p',
         '',
         '',
-        '2vh 4vh 2vh 4vh'
+        '2vh 4vh 2vh 4vh',
+        0
       )
 
       createBackButton()
@@ -595,54 +618,45 @@ easyC_button.addEventListener('click', function (e) {
       'assets/remoteAC-quickC/remoteAC3.mp4'
     )
   }
-  if (x.matches) {
-    createContent(
-      '12%',
-      '20%',
-      'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
-      `Manual tool changeover takes about one minute`,
-      'easyC_p',
-      '',
-      '',
-      '2vh 4vh 2vh 4vh'
-    )
-    // padding: 3vh 4vh 3vh 4vh;
-    window.addEventListener('resize', function (e) {
-      if (showCont.hasChildNodes()) {
-        const textContainer = document.querySelector('#centerContainer_text')
 
-        const backButtonContainer = document.querySelector(
-          '#centerContainer_backButton'
-        )
-        textContainer.remove()
+  // padding: 3vh 4vh 3vh 4vh;
+  window.addEventListener('resize', function (e) {
+    if (showCont.hasChildNodes()) {
+      const textContainer = document.querySelector('#centerContainer_text')
 
-        backButtonContainer.remove()
-        createContent(
-          '12%',
-          '20%',
-          'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
-          `Manual tool changeover takes about one minute`,
-          'easyC_p',
-          '',
-          '',
-          '2vh 4vh 2vh 4vh'
-        )
-        // padding: 3vh 4vh 3vh 4vh;
-        createBackButton()
-      }
-    })
-  } else {
-    createContent(
-      '12%',
-      '30%',
-      'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
-      `Manual tool changeover takes about one minute`,
-      'easyC_p',
-      '',
-      '',
-      '2vh 4vh 2vh 4vh'
-    )
-  }
+      const backButtonContainer = document.querySelector(
+        '#centerContainer_backButton'
+      )
+      textContainer.remove()
+
+      backButtonContainer.remove()
+      createContent(
+        '12%',
+        '20%',
+        'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+        `Manual tool changeover takes about one minute`,
+        'easyC_p',
+        '',
+        '',
+        '2vh 4vh 2vh 4vh',
+        '',
+        0
+      )
+      // padding: 3vh 4vh 3vh 4vh;
+      createBackButton()
+    }
+  })
+
+  createContent(
+    '12%',
+    '30%',
+    'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+    `Manual tool changeover takes about one minute`,
+    'easyC_p',
+    '',
+    '',
+    '2vh 4vh 2vh 4vh'
+  )
 
   createBackButton()
 
@@ -900,113 +914,60 @@ quickS_button.addEventListener('click', function (e) {
   } else {
     createVideos(null, 'assets/quickS/quickS.mp4', null)
   }
-  if (x.matches) {
-    createContent(
-      '15%',
-      '35%',
-      'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
-      'Pre-assembled cell',
-      'quickS_p',
-      '',
-      '',
-      '2vh 4vh 2vh 4vh',
-      'Common base for easy placement and start-up'
-    )
 
-    window.addEventListener('resize', function (e) {
-      if (showCont.hasChildNodes()) {
-        const textContainer = document.querySelector('#centerContainer_text')
+  createContent(
+    '15%',
+    '35%',
+    'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
+    'Pre-assembled cell',
+    'quickS_p',
+    '',
+    '',
+    '2vh 4vh 2vh 4vh',
+    'Common base for easy placement and start-up',
+    2
+  )
+  window.addEventListener('resize', function (e) {
+    if (showCont.hasChildNodes()) {
+      const textContainer = document.querySelector('#centerContainer_text')
 
-        const backButtonContainer = document.querySelector(
-          '#centerContainer_backButton'
-        )
-        textContainer.remove()
+      const backButtonContainer = document.querySelector(
+        '#centerContainer_backButton'
+      )
+      textContainer.remove()
 
-        backButtonContainer.remove()
-        createContent(
-          '15%',
-          '35%',
-          'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
-          'Pre-assembled cell',
-          'quickS_p',
-          '',
-          '',
-          '2vh 4vh 2vh 4vh',
-          'Common base for easy placement and start-up'
-        )
+      backButtonContainer.remove()
+      createContent(
+        '15%',
+        '35%',
+        'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
+        'Pre-assembled cell',
+        'quickS_p',
+        '',
+        '',
+        '2vh 4vh 2vh 4vh',
+        'Common base for easy placement and start-up',
+        0
+      )
 
-        createBackButton()
+      createBackButton()
 
-        backButton.addEventListener('click', function () {
-          backButton.style.pointerEvents = 'none'
-          HideShowCont()
-          video2.classList.add('short-vanish')
-          loop.play()
-          loop.classList.remove('short-vanish')
+      backButton.addEventListener('click', function () {
+        backButton.style.pointerEvents = 'none'
+        HideShowCont()
+        video2.classList.add('short-vanish')
+        loop.play()
+        loop.classList.remove('short-vanish')
 
-          setTimeout(() => {
-            HideShowMainButtons()
-            loop.style.zIndex = '-1'
-            video2.remove()
-            showCont.innerHTML = ''
-          }, 300)
-        })
-      }
-    })
-  } else {
-    createContent(
-      '15%',
-      '35%',
-      'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
-      'Pre-assembled cell',
-      'quickS_p',
-      '',
-      '',
-      '2vh 4vh 2vh 4vh',
-      'Common base for easy placement and start-up'
-    )
-
-    window.addEventListener('resize', function (e) {
-      if (showCont.hasChildNodes()) {
-        const textContainer = document.querySelector('#centerContainer_text')
-
-        const backButtonContainer = document.querySelector(
-          '#centerContainer_backButton'
-        )
-        textContainer.remove()
-
-        backButtonContainer.remove()
-        createContent(
-          '15%',
-          '35%',
-          'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
-          'Pre-assembled cell',
-          'quickS_p',
-          '',
-          '',
-          '2vh 4vh 2vh 4vh',
-          'Common base for easy placement and start-up'
-        )
-
-        createBackButton()
-
-        backButton.addEventListener('click', function () {
-          backButton.style.pointerEvents = 'none'
-          HideShowCont()
-          video2.classList.add('short-vanish')
-          loop.play()
-          loop.classList.remove('short-vanish')
-
-          setTimeout(() => {
-            HideShowMainButtons()
-            loop.style.zIndex = '-1'
-            video2.remove()
-            showCont.innerHTML = ''
-          }, 300)
-        })
-      }
-    })
-  }
+        setTimeout(() => {
+          HideShowMainButtons()
+          loop.style.zIndex = '-1'
+          video2.remove()
+          showCont.innerHTML = ''
+        }, 300)
+      })
+    }
+  })
 
   const centerContainerMade = document.createElement('div')
   centerContainerMade.classList.add('centerContainer')

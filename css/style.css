@@ -222,11 +222,7 @@ a {
 .text {
   position: relative;
   display: inline-grid;
-
-  /* width: fit-content; */
   z-index: 1;
-  top: 6rem;
-  left: 6rem;
 }
 .labelCont {
   white-space: pre-wrap;
@@ -235,27 +231,39 @@ a {
   width: max-content;
   background-color: #ff4500;
   padding: 1.5vh;
-
+  transform: scaleY(0);
   text-align: start;
   color: white;
   border-radius: 2vh 2vh 0 0;
   font-weight: 600;
-
-  /* animation: growtall 2s ease-in-out forwards;
-  animation-delay: 8s; */
+  animation: growtall 0.5s ease-in-out forwards;
   overflow: hidden;
+  animation-delay: 6s;
 }
-
+.label {
+  display: inline-block;
+  font-weight: 700;
+  opacity: 0;
+  overflow: hidden;
+  animation: fadein 0.5s ease-in-out forwards;
+  animation-delay: 7s;
+}
 .pCont {
   padding: 2vh 4vh 4vh 4vh;
   background-color: hsla(0, 0%, 35%, 90%);
   color: white;
   border-radius: 0 0 1rem 1rem;
+  transform: scale(0);
+  animation: grow 0.5s ease-in-out forwards;
+  overflow: hidden;
+  animation-delay: 8s;
 }
 ul {
   list-style: none; /* Remove default bullets */
+  opacity: 0;
+  animation: fadein 0.5s ease-in-out forwards;
+  animation-delay: 9s;
 }
-
 ul li {
   margin-bottom: 1em;
 }
@@ -269,12 +277,6 @@ ul li::before {
   display: inline-block; /* Needed to add space between the bullet and the text */
   width: 0.8em; /* Also needed for space (tweak if needed) */
   margin-left: -0.9em; /* Also needed for space (tweak if needed) */
-}
-p {
-  font-weight: 400;
-}
-.label {
-  font-weight: 700;
 }
 
 .backButton {
@@ -420,21 +422,42 @@ p {
 }
 @keyframes growtall {
   0% {
-    max-height: 0;
+    transform: scaleY(0);
   }
   100% {
-    max-height: 100%;
+    transform: scaleY(1);
+  }
+}
+@keyframes grow {
+  0% {
+    transform-origin: top center;
+    transform: scale(0);
+  }
+  100% {
+    transform-origin: top center;
+    transform: scale(1);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
-/* @keyframes gloss {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-} */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
