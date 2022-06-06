@@ -190,7 +190,7 @@ function createContent(
     setTimeout(() => {
       console.log(labelCont.offsetWidth)
       textContent.style.width = labelCont.offsetWidth + 'px'
-    }, 50)
+    }, 100)
     pCont.setAttribute('id', pContentId ? pContentId : 'a')
     list = document.createElement('ul')
     paragraph = document.createElement('li')
@@ -356,8 +356,9 @@ function getImgSizeInfo(img) {
 loop.addEventListener('loadedmetadata', function (e) {
   containVideoWidth = getImgSizeInfo(loop).width
   containVideoHeight = getImgSizeInfo(loop).height
-
-  setFontSizes()
+  setTimeout(() => {
+    setFontSizes()
+  }, 100)
 
   ArreglarLineas()
 
