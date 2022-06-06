@@ -370,7 +370,6 @@ loop.addEventListener('loadedmetadata', function (e) {
 })
 
 if (loop.readyState >= 1) {
-  setFontSizes()
   containVideoWidth = getImgSizeInfo(loop).width
   containVideoHeight = getImgSizeInfo(loop).height
   ArreglarLineas()
@@ -382,6 +381,7 @@ if (loop.readyState >= 1) {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
+  setFontSizes()
   if (window.matchMedia('(max-width: 420px)').matches) {
     if (window.matchMedia('(orientation: portrait)').matches) {
       warningText.innerHTML =
