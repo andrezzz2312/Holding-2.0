@@ -19,7 +19,9 @@ let containVideoHeight = ''
 let video1check = false
 let video2check = false
 let video3check = false
-
+let quickS = false
+let pCont = ''
+let list = ''
 let x = window.matchMedia('(max-height: 550px)')
 const mainButtons = document.querySelector('#mainButtons')
 const showCont = document.querySelector('#showCont')
@@ -77,7 +79,16 @@ function HideShowCont() {
   showCont.classList.toggle('short-vanish')
   showCont.classList.toggle('show')
 }
-
+function animations() {
+  labelCont.style.animation = 'growtall 0.5s ease-in-out forwards'
+  label.style.animation = 'fadein 0.5s ease-in-out forwards'
+  pCont.style.animation = 'grow 0.5s ease-in-out forwards'
+  list.style.animation = 'fadein 0.5s ease-in-out forwards'
+  labelCont.style.animationDelay = '0.5s'
+  label.style.animationDelay = '1s'
+  pCont.style.animationDelay = '1.5s'
+  list.style.animationDelay = '2s'
+}
 // Create the video tags storaged in videoContainer div
 function createVideos(source1, source2, source3) {
   if (source1) {
@@ -132,8 +143,7 @@ function createContent(
   textId,
   labelId,
   labelPad,
-  pContent2,
-  animationD
+  pContent2
 ) {
   const centerContainerMade = document.createElement('div')
   centerContainerMade.classList.add('centerContainer')
@@ -160,9 +170,6 @@ function createContent(
   label.classList.add('label')
   label.innerHTML = labelTitle
 
-  labelCont.style.animationDelay = animationD + 's'
-  label.style.animationDelay = animationD + 0.5 + 's'
-
   textContent.appendChild(labelCont)
   labelCont.appendChild(label)
 
@@ -173,9 +180,9 @@ function createContent(
   label.style.fontSize = fontvar
 
   if (pContent) {
-    const pCont = document.createElement('div')
+    pCont = document.createElement('div')
     pCont.classList.add('pCont')
-    const bullet = document.createElement('div')
+
     if (labelPad) {
       labelCont.style.padding = labelPad
     }
@@ -185,11 +192,10 @@ function createContent(
       textContent.style.width = labelCont.offsetWidth + 'px'
     }, 50)
     pCont.setAttribute('id', pContentId ? pContentId : 'a')
-    const list = document.createElement('ul')
+    list = document.createElement('ul')
     paragraph = document.createElement('li')
     paragraph.textContent = pContent
-    pCont.style.animationDelay = animationD + 1 + 's'
-    list.style.animationDelay = animationD + 1.5 + 's'
+
     list.appendChild(paragraph)
     fontvar = `calc(8px + (20 - 8) * ((${
       containVideoWidth + 'px'
@@ -233,8 +239,46 @@ function setFontSizes() {
 
   viewR_button.style.fontSize = fontvarViewR
 }
+function backButtonFunction() {
+  ArreglarLineas()
+
+  backButton.style.pointerEvents = 'none'
+  InterpolateVideo(video2, video2, video3)
+  HideShowCont()
+  loop.style.zIndex = '-5'
+  loop.classList.remove('short-vanish')
+  loop.currentTime = 0
+  loop.pause()
+  video3.addEventListener('ended', () => {
+    video3.classList.add('short-vanish')
+    loop.play()
+    HideShowMainButtons()
+    setTimeout(() => {
+      loop.style.zIndex = '-1'
+      video1.remove()
+      video2.remove()
+      video3.remove()
+      showCont.innerHTML = ''
+    }, 300)
+  })
+}
+function backButtonFunctionQuickS() {
+  backButton.style.pointerEvents = 'none'
+  HideShowCont()
+  video2.classList.add('short-vanish')
+  loop.play()
+  loop.classList.remove('short-vanish')
+  quickS = false
+  setTimeout(() => {
+    HideShowMainButtons()
+    loop.style.zIndex = '-1'
+    video2.remove()
+    showCont.innerHTML = ''
+  }, 300)
+}
 
 function createBackButton() {
+  console.log(quickS)
   const centerContainerMade = document.createElement('div')
   centerContainerMade.classList.add('centerContainer')
   centerContainerMade.setAttribute('id', 'centerContainer_backButton')
@@ -255,30 +299,11 @@ function createBackButton() {
   centerContainerMade.append(buttonContainerMade)
   buttonContainerMade.appendChild(backButtonContainer)
   backButtonContainer.appendChild(backButton)
-
-  backButton.addEventListener('click', function () {
-    ArreglarLineas()
-
-    backButton.style.pointerEvents = 'none'
-    InterpolateVideo(video2, video2, video3)
-    HideShowCont()
-    loop.style.zIndex = '-5'
-    loop.classList.remove('short-vanish')
-    loop.currentTime = 0
-    loop.pause()
-    video3.addEventListener('ended', () => {
-      video3.classList.add('short-vanish')
-      loop.play()
-      HideShowMainButtons()
-      setTimeout(() => {
-        loop.style.zIndex = '-1'
-        video1.remove()
-        video2.remove()
-        video3.remove()
-        showCont.innerHTML = ''
-      }, 300)
-    })
-  })
+  if (quickS) {
+    backButton.addEventListener('click', backButtonFunctionQuickS)
+  } else {
+    backButton.addEventListener('click', backButtonFunction)
+  }
 }
 
 function ArreglarLineas() {
@@ -438,18 +463,7 @@ compactFP_button.addEventListener('click', function (e) {
       textContainer.remove()
 
       backButtonContainer.remove()
-      createContent(
-        '15%',
-        '45%',
-        'Compact Footprint',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        0
-      )
+      createContent('15%', '45%', 'Compact Footprint')
       labelCont.style.borderRadius = '0.8rem'
       label.style.borderRadius = '0.8rem'
       createBackButton()
@@ -553,7 +567,7 @@ intuitiveH_button.addEventListener('click', function (e) {
         '2vh 4vh 2vh 4vh',
         0
       )
-
+      animations()
       createBackButton()
     }
   })
@@ -593,6 +607,7 @@ intuitiveH_button.addEventListener('click', function (e) {
         setTimeout(() => {
           video1.play()
           video1.addEventListener('ended', () => {
+            animations()
             InterpolateVideo(loop, video1, video2)
             HideShowCont()
           })
@@ -639,9 +654,9 @@ easyC_button.addEventListener('click', function (e) {
         '',
         '',
         '2vh 4vh 2vh 4vh',
-        '',
-        0
+        ''
       )
+      animations()
       // padding: 3vh 4vh 3vh 4vh;
       createBackButton()
     }
@@ -695,6 +710,7 @@ easyC_button.addEventListener('click', function (e) {
         setTimeout(() => {
           video1.play()
           video1.addEventListener('ended', () => {
+            animations()
             InterpolateVideo(loop, video1, video2)
             HideShowCont()
           })
@@ -753,7 +769,7 @@ flexibleI_button.addEventListener('click', function (e) {
         'flexibleI_label',
         '2vh 4vh 2vh 4vh'
       )
-
+      animations()
       createBackButton()
     }
   })
@@ -793,6 +809,7 @@ flexibleI_button.addEventListener('click', function (e) {
         setTimeout(() => {
           video1.play()
           setTimeout(() => {
+            animations()
             HideShowCont()
             InterpolateVideo(loop, video1, video2)
           }, 6000)
@@ -831,7 +848,7 @@ maximumU_button.addEventListener('click', function (e) {
     '2vh 4vh 2vh 4vh',
     'Minimal maintenance requirements'
   )
-
+  animations()
   createBackButton()
 
   window.addEventListener('resize', function (e) {
@@ -897,6 +914,7 @@ maximumU_button.addEventListener('click', function (e) {
         setTimeout(() => {
           video1.play()
           video1.addEventListener('ended', () => {
+            animations()
             InterpolateVideo(loop, video1, video2)
             HideShowCont()
           })
@@ -908,7 +926,7 @@ maximumU_button.addEventListener('click', function (e) {
 
 quickS_button.addEventListener('click', function (e) {
   HideShowMainButtons()
-
+  quickS = true
   if (x.matches) {
     createVideos(null, 'assets/quickS/quickS_C.mp4', null)
   } else {
@@ -924,9 +942,9 @@ quickS_button.addEventListener('click', function (e) {
     '',
     '',
     '2vh 4vh 2vh 4vh',
-    'Common base for easy placement and start-up',
-    2
+    'Common base for easy placement and start-up'
   )
+  animations()
   window.addEventListener('resize', function (e) {
     if (showCont.hasChildNodes()) {
       const textContainer = document.querySelector('#centerContainer_text')
@@ -946,49 +964,14 @@ quickS_button.addEventListener('click', function (e) {
         '',
         '',
         '2vh 4vh 2vh 4vh',
-        'Common base for easy placement and start-up',
-        0
+        'Common base for easy placement and start-up'
       )
-
+      animations()
       createBackButton()
-
-      backButton.addEventListener('click', function () {
-        backButton.style.pointerEvents = 'none'
-        HideShowCont()
-        video2.classList.add('short-vanish')
-        loop.play()
-        loop.classList.remove('short-vanish')
-
-        setTimeout(() => {
-          HideShowMainButtons()
-          loop.style.zIndex = '-1'
-          video2.remove()
-          showCont.innerHTML = ''
-        }, 300)
-      })
     }
   })
 
-  const centerContainerMade = document.createElement('div')
-  centerContainerMade.classList.add('centerContainer')
-  centerContainerMade.setAttribute('id', 'centerContainer_backButton')
-  const buttonContainerMade = document.createElement('div')
-  buttonContainerMade.classList.add('buttonContainer')
-  buttonContainerMade.style.width = containVideoWidth + 'px'
-  buttonContainerMade.style.height = containVideoHeight + 'px'
-  backButton = document.createElement('button')
-  let fontvar = `calc(6px + (16 - 6) * ((${
-    containVideoWidth + 'px'
-  } - 320px) / (1440 - 320)))`
-  backButton.style.fontSize = fontvar
-  backButton.classList.add('viewR_a')
-  backButton.textContent = 'Back to Features'
-  backButtonContainer = document.createElement('div')
-  backButtonContainer.classList.add('viewR_container')
-  showCont.appendChild(centerContainerMade)
-  centerContainerMade.append(buttonContainerMade)
-  buttonContainerMade.appendChild(backButtonContainer)
-  backButtonContainer.appendChild(backButton)
+  createBackButton()
 
   check1()
 
@@ -1023,21 +1006,6 @@ quickS_button.addEventListener('click', function (e) {
           loop.pause()
           loop.style.zIndex = '-5'
         }, 500)
-
-        backButton.addEventListener('click', function () {
-          backButton.style.pointerEvents = 'none'
-          HideShowCont()
-          video2.classList.add('short-vanish')
-          loop.play()
-          loop.classList.remove('short-vanish')
-
-          setTimeout(() => {
-            HideShowMainButtons()
-            loop.style.zIndex = '-1'
-            video2.remove()
-            showCont.innerHTML = ''
-          }, 300)
-        })
       }
     }
   }
