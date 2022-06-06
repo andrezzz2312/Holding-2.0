@@ -224,7 +224,6 @@ function createContent(
 // Create the svgs for the showCont div / 4 first parameters are the x and y points of the first and second point respectively, last 2 are the x and y points of the dot
 
 function setFontSizes() {
-  console.log('fonts')
   const test = document.querySelectorAll('.button')
 
   let fontvar = `calc(9px + (20 - 9) * ((${
@@ -357,9 +356,6 @@ function getImgSizeInfo(img) {
 loop.addEventListener('loadedmetadata', function (e) {
   containVideoWidth = getImgSizeInfo(loop).width
   containVideoHeight = getImgSizeInfo(loop).height
-  setTimeout(() => {
-    setFontSizes()
-  }, 100)
 
   ArreglarLineas()
 
@@ -454,6 +450,8 @@ compactFP_button.addEventListener('click', function (e) {
 
   createContent('15%', '45%', 'Compact Footprint')
   labelCont.style.borderRadius = '0.8rem'
+  labelCont.style.transform = 'scale(1)'
+  label.style.opacity = '1'
   createBackButton()
 
   window.addEventListener('resize', function (e) {
@@ -947,7 +945,7 @@ quickS_button.addEventListener('click', function (e) {
     '2vh 4vh 2vh 4vh',
     'Common base for easy placement and start-up'
   )
-  animations()
+
   window.addEventListener('resize', function (e) {
     if (showCont.hasChildNodes()) {
       const textContainer = document.querySelector('#centerContainer_text')
@@ -997,7 +995,7 @@ quickS_button.addEventListener('click', function (e) {
         loader.classList.remove('show')
         loader.classList.add('short-vanish')
         loader.style.zIndex = '-200'
-
+        animations()
         clearInterval(clearcheck)
 
         video2.play()
