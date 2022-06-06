@@ -131,7 +131,8 @@ function createContent(
   pContentId,
   textId,
   labelId,
-  labelPad
+  labelPad,
+  pContent2
 ) {
   const centerContainerMade = document.createElement('div')
   centerContainerMade.classList.add('centerContainer')
@@ -170,22 +171,28 @@ function createContent(
     if (labelPad) {
       labelCont.style.padding = labelPad
     }
-    bullet.classList.add('bullet')
-    bullet.style.fontSize = fontvar
-    bullet.innerHTML = '&bull;'
+
     setTimeout(() => {
       console.log(labelCont.offsetWidth)
       textContent.style.width = labelCont.offsetWidth + 'px'
     }, 50)
     pCont.setAttribute('id', pContentId ? pContentId : 'a')
-    pCont.appendChild(bullet)
-    paragraph = document.createElement('p')
+    const list = document.createElement('ul')
+    paragraph = document.createElement('li')
     paragraph.textContent = pContent
-    pCont.appendChild(paragraph)
-    textContent.appendChild(pCont)
+    list.appendChild(paragraph)
     fontvar = `calc(8px + (20 - 8) * ((${
       containVideoWidth + 'px'
     } - 320px) / (1440 - 320)))`
+    if (pContent2) {
+      paragraph2 = document.createElement('li')
+      paragraph2.textContent = pContent2
+      paragraph2.style.fontSize = fontvar
+      list.appendChild(paragraph2)
+    }
+    pCont.appendChild(list)
+    textContent.appendChild(pCont)
+
     paragraph.style.fontSize = fontvar
   }
 
@@ -498,7 +505,7 @@ intuitiveH_button.addEventListener('click', function (e) {
     'intuitiveH_p',
     '',
     '',
-    '3vh 4vh 3vh 4vh'
+    '2vh 4vh 2vh 4vh'
   )
 
   createBackButton()
@@ -521,7 +528,7 @@ intuitiveH_button.addEventListener('click', function (e) {
         'intuitiveH_p',
         '',
         '',
-        '3vh 4vh 3vh 4vh'
+        '2vh 4vh 2vh 4vh'
       )
 
       createBackButton()
@@ -592,12 +599,12 @@ easyC_button.addEventListener('click', function (e) {
     createContent(
       '12%',
       '20%',
-      'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+      'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       `Manual tool changeover takes about one minute`,
       'easyC_p',
       '',
       '',
-      '3vh 4vh 3vh 4vh'
+      '2vh 4vh 2vh 4vh'
     )
     // padding: 3vh 4vh 3vh 4vh;
     window.addEventListener('resize', function (e) {
@@ -613,12 +620,12 @@ easyC_button.addEventListener('click', function (e) {
         createContent(
           '12%',
           '20%',
-          'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+          'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
           `Manual tool changeover takes about one minute`,
           'easyC_p',
           '',
           '',
-          '3vh 4vh 3vh 4vh'
+          '2vh 4vh 2vh 4vh'
         )
         // padding: 3vh 4vh 3vh 4vh;
         createBackButton()
@@ -628,12 +635,12 @@ easyC_button.addEventListener('click', function (e) {
     createContent(
       '12%',
       '30%',
-      'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+      'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       `Manual tool changeover takes about one minute`,
       'easyC_p',
       '',
       '',
-      '3vh 4vh 3vh 4vh'
+      '2vh 4vh 2vh 4vh'
     )
   }
 
@@ -700,14 +707,14 @@ flexibleI_button.addEventListener('click', function (e) {
     )
   }
   createContent(
-    '65%',
-    '40%',
-    'Flexible Infeed Direction',
+    '66%',
+    '37.5%',
+    'Flexible Infeed \nDirection',
     `Choose the right configuration for your plant layout`,
     'flexibleI_p',
     'flexibleI_text',
     'flexibleI_label',
-    20
+    '2vh 4vh 2vh 4vh'
   )
 
   createBackButton()
@@ -723,14 +730,14 @@ flexibleI_button.addEventListener('click', function (e) {
 
       backButtonContainer.remove()
       createContent(
-        '65%',
-        '40%',
-        'Flexible Infeed Direction',
+        '66%',
+        '37.5%',
+        'Flexible Infeed \nDirection',
         `Choose the right configuration for your plant layout`,
         'flexibleI_p',
         'flexibleI_text',
         'flexibleI_label',
-        20
+        '2vh 4vh 2vh 4vh'
       )
 
       createBackButton()
@@ -800,11 +807,15 @@ maximumU_button.addEventListener('click', function (e) {
   }
 
   createContent(
-    '58%',
-    '35%',
-    'Maximum Uptime',
-    'Utilizing a FANUC M710iC/50H robot with a MTBF 80,000 hrs maximizes uptime and minimizes maintenance requirements',
-    'maximumU_p'
+    '57.5%',
+    '16%',
+    'Maximum Uptime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+    'Robot Mean Time Between Failures: over 80,000 hrs',
+    'maximumU_p',
+    '',
+    '',
+    '2vh 4vh 2vh 4vh',
+    'Minimal maintenance requirements'
   )
 
   createBackButton()
@@ -820,11 +831,15 @@ maximumU_button.addEventListener('click', function (e) {
 
       backButtonContainer.remove()
       createContent(
-        '58%',
-        '35%',
-        'Maximum Uptime',
-        'Utilizing a FANUC M710iC/50H robot with a MTBF 80,000 hrs maximizes uptime and minimizes maintenance requirements',
-        'maximumU_p'
+        '57.5%',
+        '16%',
+        'Maximum Uptime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+        'Robot Mean Time Between Failures: over 80,000 hrs',
+        'maximumU_p',
+        '',
+        '',
+        '2vh 4vh 2vh 4vh',
+        'Minimal maintenance requirements'
       )
 
       createBackButton()
@@ -887,11 +902,15 @@ quickS_button.addEventListener('click', function (e) {
   }
   if (x.matches) {
     createContent(
-      '7%',
-      '30%',
-      'Quick Startup',
-      'The cell comespre-assembled on a common base for easy placement and start-up',
-      'quickS_p'
+      '15%',
+      '35%',
+      'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
+      'Pre-assembled cell',
+      'quickS_p',
+      '',
+      '',
+      '2vh 4vh 2vh 4vh',
+      'Common base for easy placement and start-up'
     )
 
     window.addEventListener('resize', function (e) {
@@ -905,11 +924,15 @@ quickS_button.addEventListener('click', function (e) {
 
         backButtonContainer.remove()
         createContent(
-          '7%',
-          '30%',
-          'Quick Startup',
-          'The cell comespre-assembled on a common base for easy placement and start-up',
-          'quickS_p'
+          '15%',
+          '35%',
+          'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
+          'Pre-assembled cell',
+          'quickS_p',
+          '',
+          '',
+          '2vh 4vh 2vh 4vh',
+          'Common base for easy placement and start-up'
         )
 
         createBackButton()
@@ -932,11 +955,15 @@ quickS_button.addEventListener('click', function (e) {
     })
   } else {
     createContent(
-      '8%',
-      '75%',
-      'Quick Startup',
-      'The cell comespre-assembled on a common base for easy placement and start-up',
-      'quickS_p'
+      '15%',
+      '35%',
+      'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
+      'Pre-assembled cell',
+      'quickS_p',
+      '',
+      '',
+      '2vh 4vh 2vh 4vh',
+      'Common base for easy placement and start-up'
     )
 
     window.addEventListener('resize', function (e) {
@@ -950,11 +977,15 @@ quickS_button.addEventListener('click', function (e) {
 
         backButtonContainer.remove()
         createContent(
-          '8%',
-          '75%',
-          'Quick Startup',
-          'The cell comespre-assembled on a common base for easy placement and start-up',
-          'quickS_p'
+          '15%',
+          '35%',
+          'Quick Start-up&nbsp;&nbsp;&nbsp;&nbsp;',
+          'Pre-assembled cell',
+          'quickS_p',
+          '',
+          '',
+          '2vh 4vh 2vh 4vh',
+          'Common base for easy placement and start-up'
         )
 
         createBackButton()

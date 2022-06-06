@@ -231,31 +231,44 @@ a {
 .labelCont {
   white-space: pre-wrap;
   position: relative;
-  display: grid;
+
   width: max-content;
   background-color: #ff4500;
+  padding: 1.5vh;
 
-  /* padding: 1.5vh; */
-  overflow: hidden;
   text-align: start;
   color: white;
   border-radius: 2vh 2vh 0 0;
   font-weight: 600;
+
+  /* animation: growtall 2s ease-in-out forwards;
+  animation-delay: 8s; */
+  overflow: hidden;
 }
 
 .pCont {
-  padding: 2vh 4vh 3vh 1.9vh;
+  padding: 2vh 4vh 4vh 4vh;
   background-color: hsla(0, 0%, 35%, 90%);
   color: white;
-
   border-radius: 0 0 1rem 1rem;
-  display: flex;
-  flex-direction: row;
-  gap: 0.5vh;
 }
-.bullet {
-  margin-left: 0.5vh;
-  color: #ff4500;
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li {
+  margin-bottom: 1em;
+}
+li:last-child {
+  margin-bottom: 0;
+}
+ul li::before {
+  content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #ff4500; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 0.8em; /* Also needed for space (tweak if needed) */
+  margin-left: -0.9em; /* Also needed for space (tweak if needed) */
 }
 p {
   font-weight: 400;
@@ -405,6 +418,15 @@ p {
     transform: scale(1);
   }
 }
+@keyframes growtall {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 100%;
+  }
+}
+
 /* @keyframes gloss {
   0% {
     left: -100%;
