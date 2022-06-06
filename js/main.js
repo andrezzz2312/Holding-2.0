@@ -224,6 +224,7 @@ function createContent(
 // Create the svgs for the showCont div / 4 first parameters are the x and y points of the first and second point respectively, last 2 are the x and y points of the dot
 
 function setFontSizes() {
+  console.log('fonts')
   const test = document.querySelectorAll('.button')
 
   let fontvar = `calc(9px + (20 - 9) * ((${
@@ -357,7 +358,6 @@ loop.addEventListener('loadedmetadata', function (e) {
   containVideoWidth = getImgSizeInfo(loop).width
   containVideoHeight = getImgSizeInfo(loop).height
   setTimeout(() => {
-    console.log('fonts')
     setFontSizes()
   }, 100)
 
