@@ -86,8 +86,8 @@ function animations() {
   list.style.animation = 'fadein 0.5s ease-in-out forwards'
   labelCont.style.animationDelay = '0.5s'
   label.style.animationDelay = '1s'
-  pCont.style.animationDelay = '1.5s'
-  list.style.animationDelay = '2s'
+  pCont.style.animationDelay = '1s'
+  list.style.animationDelay = '1.5s'
 }
 // Create the video tags storaged in videoContainer div
 function createVideos(source1, source2, source3) {
