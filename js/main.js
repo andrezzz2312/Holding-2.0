@@ -469,6 +469,8 @@ compactFP_button.addEventListener('click', function (e) {
       createContent('15%', '45%', 'Compact Footprint')
       labelCont.style.borderRadius = '0.8rem'
       label.style.borderRadius = '0.8rem'
+      labelCont.style.transform = 'scale(1)'
+      label.style.opacity = '1'
       createBackButton()
     }
   })
