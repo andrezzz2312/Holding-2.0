@@ -80,9 +80,11 @@ function HideShowCont() {
   showCont.classList.toggle('show')
 }
 function animations() {
-  labelCont.style.animation = 'growtall 0.5s ease-in-out forwards'
+  labelCont.style.animation =
+    'growtall 0.5s cubic-bezier(0.86, 0.01, 0.77, 0.18) forwards '
   label.style.animation = 'fadein 0.5s ease-in-out forwards'
-  pCont.style.animation = 'grow 0.5s ease-in-out forwards'
+  pCont.style.animation =
+    'grow 0.5s cubic-bezier(0.86, 0.01, 0.77, 0.18) forwards'
   list.style.animation = 'fadein 0.5s ease-in-out forwards'
   labelCont.style.animationDelay = '0.5s'
   label.style.animationDelay = '1s'
