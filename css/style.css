@@ -48,6 +48,7 @@ body {
 }
 
 .viewR_a {
+  width: max-content;
   position: relative;
   height: auto;
   border: none;

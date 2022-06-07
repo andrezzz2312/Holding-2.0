@@ -232,12 +232,14 @@ function setFontSizes() {
   for (let i = 0; i < test.length; i++) {
     test[i].style.fontSize = fontvar
   }
+
   let fontvarViewR = `calc(6px + (16 - 6) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
 
   viewR_button.style.fontSize = fontvarViewR
 }
+
 function backButtonFunction() {
   ArreglarLineas()
 
