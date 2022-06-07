@@ -233,7 +233,7 @@ function setFontSizes() {
     test[i].style.fontSize = fontvar
   }
 
-  let fontvarViewR = `calc(6px + (16 - 6) * ((${
+  let fontvarViewR = `calc(7px + (17 - 7) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
 
@@ -288,7 +288,7 @@ function createBackButton() {
   buttonContainerMade.style.width = containVideoWidth + 'px'
   buttonContainerMade.style.height = containVideoHeight + 'px'
   backButton = document.createElement('button')
-  let fontvar = `calc(6px + (16 - 6) * ((${
+  let fontvar = `calc(7px + (17 - 7) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
   backButton.style.fontSize = fontvar
@@ -1053,7 +1053,7 @@ viewR_button.addEventListener('click', function (e) {
   backButton = document.createElement('button')
   backButton.classList.add('viewR_a')
   backButton.textContent = 'Back to Features'
-  let fontvar = `calc(6px + (16 - 6) * ((${
+  let fontvar = `calc(7px + (17 - 7) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
   backButton.style.fontSize = fontvar
@@ -1068,7 +1068,7 @@ viewR_button.addEventListener('click', function (e) {
     if (centerContainerMade.hasChildNodes()) {
       buttonContainerMade.style.width = containVideoWidth + 'px'
       buttonContainerMade.style.height = containVideoHeight + 'px'
-      let fontvar = `calc(6px + (16 - 6) * ((${
+      let fontvar = `calc(7px + (17 - 7) * ((${
         containVideoWidth + 'px'
       } - 320px) / (1440 - 320)))`
       backButton.style.fontSize = fontvar
