@@ -181,6 +181,10 @@ a {
   align-items: flex-end;
   width: 100%;
   height: 100%;
+  pointer-events: none;
+}
+#centerContainer_backButton {
+  pointer-events: none;
 }
 
 .svgDot {
@@ -364,12 +368,6 @@ ul li::before {
 }
 
 @media (max-height: 550px) and (orientation: landscape) {
-  #flexibleI_p {
-    max-width: 33%;
-  }
-  #flexibleI_label {
-    max-width: 27%;
-  }
   p {
     font-size: calc(6px + (14 - 6) * ((100vw - 320px) / (1440 - 320)));
   }

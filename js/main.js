@@ -233,7 +233,7 @@ function setFontSizes() {
   for (let i = 0; i < test.length; i++) {
     test[i].style.fontSize = fontvar
   }
-  let fontvarViewR = `calc(8px + (18 - 8) * ((${
+  let fontvarViewR = `calc(6px + (16 - 6) * ((${
     containVideoWidth + 'px'
   } - 320px) / (1440 - 320)))`
 
@@ -356,7 +356,7 @@ function getImgSizeInfo(img) {
 loop.addEventListener('loadedmetadata', function (e) {
   containVideoWidth = getImgSizeInfo(loop).width
   containVideoHeight = getImgSizeInfo(loop).height
-
+  setFontSizes()
   ArreglarLineas()
 
   initial.classList.add('short-vanish')
@@ -366,6 +366,7 @@ loop.addEventListener('loadedmetadata', function (e) {
 })
 
 if (loop.readyState >= 1) {
+  setFontSizes()
   containVideoWidth = getImgSizeInfo(loop).width
   containVideoHeight = getImgSizeInfo(loop).height
   ArreglarLineas()
@@ -522,20 +523,20 @@ intuitiveH_button.addEventListener('click', function (e) {
 
   if (x.matches) {
     createVideos(
-      'assets/remoteAC-quickC/remoteAC_C1.mp4',
-      'assets/remoteAC-quickC/remoteAC_C2.mp4',
-      'assets/remoteAC-quickC/remoteAC_C3.mp4'
+      'assets/intuitiveH/intuitiveH_C1.mp4',
+      'assets/intuitiveH/intuitiveH_C2.mp4',
+      'assets/intuitiveH/intuitiveH_C3.mp4'
     )
   } else {
     createVideos(
-      'assets/remoteAC-quickC/remoteAC1.mp4',
-      'assets/remoteAC-quickC/remoteAC2.mp4',
-      'assets/remoteAC-quickC/remoteAC3.mp4'
+      'assets/intuitiveH/intuitiveH1.mp4',
+      'assets/intuitiveH/intuitiveH2.mp4',
+      'assets/intuitiveH/intuitiveH3.mp4'
     )
   }
 
   createContent(
-    '20%',
+    '12%',
     '28%',
     `Intuitive HMI with\nPallet Configuration&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`,
     `Easily create, modify, copy or clear recipes`,
@@ -623,15 +624,15 @@ easyC_button.addEventListener('click', function (e) {
 
   if (x.matches) {
     createVideos(
-      'assets/remoteAC-quickC/remoteAC_C1.mp4',
-      'assets/remoteAC-quickC/remoteAC_C2.mp4',
-      'assets/remoteAC-quickC/remoteAC_C3.mp4'
+      'assets/easyC/easyC_C1.mp4',
+      'assets/easyC/easyC_C2.mp4',
+      'assets/easyC/easyC_C3.mp4'
     )
   } else {
     createVideos(
-      'assets/remoteAC-quickC/remoteAC1.mp4',
-      'assets/remoteAC-quickC/remoteAC2.mp4',
-      'assets/remoteAC-quickC/remoteAC3.mp4'
+      'assets/easyC/easyC1.mp4',
+      'assets/easyC/easyC2.mp4',
+      'assets/easyC/easyC3.mp4'
     )
   }
 
@@ -647,7 +648,7 @@ easyC_button.addEventListener('click', function (e) {
 
       backButtonContainer.remove()
       createContent(
-        '12%',
+        '58%',
         '20%',
         'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
         `Manual tool changeover takes about one minute`,
@@ -664,8 +665,8 @@ easyC_button.addEventListener('click', function (e) {
   })
 
   createContent(
-    '12%',
-    '30%',
+    '58%',
+    '20%',
     'Easy Changeover&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
     `Manual tool changeover takes about one minute`,
     'easyC_p',
@@ -726,15 +727,15 @@ flexibleI_button.addEventListener('click', function (e) {
 
   if (x.matches) {
     createVideos(
-      'assets/fourCIDO/fourCIDO_C1.mp4',
-      'assets/fourCIDO/fourCIDO_C2.mp4',
-      'assets/fourCIDO/fourCIDO_C3.mp4'
+      'assets/flexibleI/flexibleI_C1.mp4',
+      'assets/flexibleI/flexibleI_C2.mp4',
+      'assets/flexibleI/flexibleI_C3.mp4'
     )
   } else {
     createVideos(
-      'assets/fourCIDO/fourCIDO1.mp4',
-      'assets/fourCIDO/fourCIDO2.mp4',
-      'assets/fourCIDO/fourCIDO3.mp4'
+      'assets/flexibleI/flexibleI1.mp4',
+      'assets/flexibleI/flexibleI2.mp4',
+      'assets/flexibleI/flexibleI3.mp4'
     )
   }
   createContent(
@@ -1049,6 +1050,10 @@ viewR_button.addEventListener('click', function (e) {
   backButton = document.createElement('button')
   backButton.classList.add('viewR_a')
   backButton.textContent = 'Back to Features'
+  let fontvar = `calc(6px + (16 - 6) * ((${
+    containVideoWidth + 'px'
+  } - 320px) / (1440 - 320)))`
+  backButton.style.fontSize = fontvar
   backButtonContainer = document.createElement('div')
   backButtonContainer.classList.add('viewR_container')
   mainContainer.appendChild(centerContainerMade)
