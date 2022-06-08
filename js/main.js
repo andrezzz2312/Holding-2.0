@@ -65,7 +65,7 @@ function InterpolateVideo(videoToPause, videoToVanish, videoToPlay) {
     videoToPlay.play()
   }, 500)
 }
-
+// loop.currentTime = 60
 // Vanish/show the main buttons and svgs
 function HideShowMainButtons() {
   mainButtons.classList.toggle('show')
@@ -1061,9 +1061,12 @@ viewR_button.addEventListener('click', function (e) {
   backButton.style.fontSize = fontvar
   backButtonContainer = document.createElement('div')
   backButtonContainer.classList.add('viewR_container')
+  blankSpace = document.createElement('div')
+  blankSpace.classList.add('blankSpace')
   mainContainer.appendChild(centerContainerMade)
   centerContainerMade.append(buttonContainerMade)
   buttonContainerMade.appendChild(backButtonContainer)
+  buttonContainerMade.appendChild(blankSpace)
   backButtonContainer.appendChild(backButton)
 
   window.addEventListener('resize', function (e) {
