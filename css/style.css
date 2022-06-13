@@ -86,6 +86,9 @@ body {
 .buttonContainer {
   position: relative;
 }
+#buttonContainer_backButton {
+  pointer-events: none;
+}
 .blankSpaceContainer {
   position: absolute;
   bottom: 0;
