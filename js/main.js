@@ -28,7 +28,10 @@ const showCont = document.querySelector('#showCont')
 const svgContainer = document.querySelectorAll('.svgContainer')
 const buttonContainer = document.querySelectorAll('.buttonContainer')
 const mainContainer = document.querySelector('.container')
-
+const blankSpaceContainer = document.querySelector('.blankSpaceContainer')
+const blankSpaceCenterContainer = document.querySelector(
+  '#blankSpace_centerContainer'
+)
 const loader = document.querySelector('.loader')
 const viewR_button = document.querySelector('#viewR_button')
 const initial = document.querySelector('.initial')
@@ -1061,18 +1064,26 @@ viewR_button.addEventListener('click', function (e) {
   backButton.style.fontSize = fontvar
   backButtonContainer = document.createElement('div')
   backButtonContainer.classList.add('viewR_container')
+
+  blankSpaceCenterContainer.style.width = containVideoWidth + 'px'
+  blankSpaceCenterContainer.style.height = containVideoHeight + 'px'
   blankSpace = document.createElement('div')
   blankSpace.classList.add('blankSpace')
   mainContainer.appendChild(centerContainerMade)
   centerContainerMade.append(buttonContainerMade)
   buttonContainerMade.appendChild(backButtonContainer)
-  buttonContainerMade.appendChild(blankSpace)
+  blankSpaceContainer.style.pointerEvents = 'all'
+  blankSpaceContainer.classList.add('show')
+  blankSpaceContainer.appendChild(blankSpace)
+
   backButtonContainer.appendChild(backButton)
 
   window.addEventListener('resize', function (e) {
     if (centerContainerMade.hasChildNodes()) {
       buttonContainerMade.style.width = containVideoWidth + 'px'
       buttonContainerMade.style.height = containVideoHeight + 'px'
+      blankSpaceCenterContainer.style.width = containVideoWidth + 'px'
+      blankSpaceCenterContainer.style.height = containVideoHeight + 'px'
       let fontvar = `calc(7px + (17 - 7) * ((${
         containVideoWidth + 'px'
       } - 320px) / (1440 - 320)))`
@@ -1087,8 +1098,11 @@ viewR_button.addEventListener('click', function (e) {
     loop.currentTime = 0
     loop.classList.remove('short-vanish')
 
+    blankSpaceContainer.style.pointerEvents = 'none'
+
     centerContainerMade.classList.remove('show')
     centerContainerMade.classList.add('short-vanish')
+    blankSpace.classList.add('short-vanish')
     HideShowCont()
     setTimeout(() => {
       initial.classList.remove('show')
@@ -1104,6 +1118,7 @@ viewR_button.addEventListener('click', function (e) {
     setTimeout(() => {
       loop.style.zIndex = '-1'
       showCont.innerHTML = ''
+      blankSpace.remove()
       centerContainer_backButton.remove()
     }, 1000)
   })

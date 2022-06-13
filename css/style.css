@@ -74,18 +74,34 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
-
+.centerContainer > * {
+  pointer-events: all;
+}
+#blankSpace_centerContainer {
+  position: relative;
+  pointer-events: none;
+}
 .buttonContainer {
   position: relative;
+}
+.blankSpaceContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  width: 100%;
+  height: 9%;
 }
 .blankSpace {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 9%;
-  background: #ffff;
+  height: 100%;
+  background: hsla(0, 0%, 100%, 100%);
   z-index: 1;
   overflow: hidden;
 }
@@ -148,6 +164,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 
 #compactFP_button {
