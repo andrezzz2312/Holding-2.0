@@ -1,7 +1,4 @@
 // Variables
-const loop = document.getElementById('loopvideo')
-const loopContainer = document.getElementById('loop')
-const videoHolder = document.querySelector('#videoHolder')
 let video1 = ''
 let video2 = ''
 let video3 = ''
@@ -23,12 +20,14 @@ let quickS = false
 let pCont = ''
 let list = ''
 let x = window.matchMedia('(max-height: 550px)')
+const loop = document.getElementById('loopvideo')
+const loopContainer = document.getElementById('loop')
+const videoHolder = document.querySelector('#videoHolder')
 const mainButtons = document.querySelector('#mainButtons')
 const showCont = document.querySelector('#showCont')
 const svgContainer = document.querySelectorAll('.svgContainer')
 const buttonContainer = document.querySelectorAll('.buttonContainer')
 const mainContainer = document.querySelector('.container')
-
 const loader = document.querySelector('.loader')
 const viewR_button = document.querySelector('#viewR_button')
 const initial = document.querySelector('.initial')
@@ -47,6 +46,54 @@ let isMobileDevice = regexp.test(details)
 let isIOS = ios.test(details)
 let isMac = macosPlatforms.test(details)
 
+let startTime, endTime
+let downloadSize = 800000
+let download = new Image()
+let Mbps = ''
+function checkSpeed() {
+  let imageAddr =
+    'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200714180638/CIP_Launch-banner.png' +
+    '?n=' +
+    Math.random()
+  let Bps = ''
+  let Kbps = ''
+
+  download.onload = function () {
+    endTime = new Date().getTime()
+
+    showResults()
+  }
+  startTime = new Date().getTime()
+  download.src = imageAddr
+
+  function showResults() {
+    let duration = (endTime - startTime) / 1000
+
+    let bitsLoaded = downloadSize * 8
+
+    Bps = Math.round(bitsLoaded / duration)
+
+    Kbps = (Bps / 1024).toFixed(2)
+    Mbps = (Kbps / 1024).toFixed(2)
+    console.log(
+      'Your connection speed is: \n' +
+        Bps +
+        ' bps\n' +
+        Kbps +
+        ' kbps\n' +
+        Mbps +
+        ' Mbps\n'
+    )
+  }
+}
+checkSpeed()
+setTimeout(() => {
+  if (Mbps !== '') {
+    console.log(Mbps)
+  }
+}, 500)
+
+// Display fullscreen button
 if (!isMobileDevice) {
   fullscreen_button.style.display = 'none'
 } else {
@@ -79,6 +126,8 @@ function HideShowCont() {
   showCont.classList.toggle('short-vanish')
   showCont.classList.toggle('show')
 }
+
+// Set animations for the buttons
 function animations() {
   labelCont.style.animation =
     'growtall 0.5s cubic-bezier(0.86, 0.01, 0.77, 0.18) forwards '
@@ -91,6 +140,7 @@ function animations() {
   pCont.style.animationDelay = '1s'
   list.style.animationDelay = '1.5s'
 }
+
 // Create the video tags storaged in videoContainer div
 function createVideos(source1, source2, source3) {
   if (source1) {
@@ -435,10 +485,9 @@ fullscreen_button.addEventListener('click', function (e) {
 })
 
 compactFP_button.addEventListener('click', function (e) {
-  console.time('test1')
   HideShowMainButtons()
 
-  if (x.matches) {
+  if (Mbps <= 15) {
     createVideos(
       'assets/compactFP/compactFP_C1.mp4',
       'assets/compactFP/compactFP_C2.mp4',
@@ -503,7 +552,6 @@ compactFP_button.addEventListener('click', function (e) {
       }, 1000)
 
       if (video1check && video2check && video3check) {
-        console.timeEnd('test1')
         loader.classList.remove('show')
         loader.classList.add('short-vanish')
         loader.style.zIndex = '-200'
@@ -526,7 +574,7 @@ compactFP_button.addEventListener('click', function (e) {
 intuitiveH_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (x.matches) {
+  if (Mbps <= 15) {
     createVideos(
       'assets/intuitiveH/intuitiveH_C1.mp4',
       'assets/intuitiveH/intuitiveH_C2.mp4',
@@ -627,7 +675,7 @@ intuitiveH_button.addEventListener('click', function (e) {
 easyC_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (x.matches) {
+  if (Mbps <= 15) {
     createVideos(
       'assets/easyC/easyC_C1.mp4',
       'assets/easyC/easyC_C2.mp4',
@@ -730,7 +778,7 @@ easyC_button.addEventListener('click', function (e) {
 flexibleI_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (x.matches) {
+  if (Mbps <= 15) {
     createVideos(
       'assets/flexibleI/flexibleI_C1.mp4',
       'assets/flexibleI/flexibleI_C2.mp4',
@@ -829,7 +877,7 @@ flexibleI_button.addEventListener('click', function (e) {
 maximumU_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (x.matches) {
+  if (Mbps <= 15) {
     createVideos(
       'assets/maximumU/maximumU_C1.mp4',
       'assets/maximumU/maximumU_C2.mp4',
@@ -932,7 +980,7 @@ maximumU_button.addEventListener('click', function (e) {
 quickS_button.addEventListener('click', function (e) {
   HideShowMainButtons()
   quickS = true
-  if (x.matches) {
+  if (Mbps <= 15) {
     createVideos(null, 'assets/quickS/quickS_C.mp4', null)
   } else {
     createVideos(null, 'assets/quickS/quickS.mp4', null)
