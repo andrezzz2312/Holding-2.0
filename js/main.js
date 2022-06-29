@@ -57,14 +57,14 @@ function checkSpeed() {
     Math.random()
   let Bps = ''
   let Kbps = ''
+  startTime = new Date().getTime()
+  download.src = imageAddr
 
   download.onload = function () {
     endTime = new Date().getTime()
 
     showResults()
   }
-  startTime = new Date().getTime()
-  download.src = imageAddr
 
   function showResults() {
     let duration = (endTime - startTime) / 1000
@@ -87,6 +87,7 @@ function checkSpeed() {
   }
 }
 checkSpeed()
+
 setTimeout(() => {
   if (Mbps !== '') {
     console.log(Mbps)
