@@ -1,4 +1,5 @@
 // Variables
+let videoloop = ''
 let video1 = ''
 let video2 = ''
 let video3 = ''
@@ -20,8 +21,9 @@ let quickS = false
 let pCont = ''
 let list = ''
 let x = window.matchMedia('(max-height: 550px)')
-const loop = document.getElementById('loopvideo')
+const loop = document.getElementById('loopVideo')
 const loopContainer = document.getElementById('loop')
+
 const videoHolder = document.querySelector('#videoHolder')
 const mainButtons = document.querySelector('#mainButtons')
 const showCont = document.querySelector('#showCont')
@@ -50,6 +52,7 @@ let startTime, endTime
 let downloadSize = 800000
 let download = new Image()
 let Mbps = ''
+
 function checkSpeed() {
   let imageAddr =
     'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200714180638/CIP_Launch-banner.png' +
@@ -84,15 +87,41 @@ function checkSpeed() {
         Mbps +
         ' Mbps\n'
     )
+    // if (Mbps <= 15) {
+    //   videoloop = document.createElement('video')
+    //   videoloop.src = 'assets/loop_C.mp4'
+    //   videoloop.muted = true
+
+    //   videoloop.setAttribute('poster', '')
+    //   videoloop.controls = false
+    //   videoloop.autoplay = 'true'
+
+    //   videoloop.style.zIndex = '1'
+
+    //   loopContainer.appendChild(videoloop)
+    //   // loop.setAttribute('src', 'assets/loop_C.mp4')
+    //   console.log('loop_c' + Mbps)
+    // } else {
+    //   videoloop = document.createElement('video')
+    //   videoloop.src = 'assets/loop.mp4'
+
+    //   videoloop.muted = true
+    //   videoloop.playsinline = true
+
+    //   videoloop.poster = true
+    //   videoloop.setAttribute('id', 'loopVideo')
+    //   videoloop.controls = false
+    //   videoloop.autoplay = 'true'
+
+    //   videoloop.style.zIndex = '1'
+    //   videoloop.play()
+    //   loopContainer.appendChild(videoloop)
+    //   // loop.setAttribute('src', 'assets/loop.mp4')
+    //   console.log('loop' + Mbps)
+    // }
   }
 }
 checkSpeed()
-
-setTimeout(() => {
-  if (Mbps !== '') {
-    console.log(Mbps)
-  }
-}, 500)
 
 // Display fullscreen button
 if (!isMobileDevice) {
