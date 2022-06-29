@@ -21,8 +21,8 @@ let quickS = false
 let pCont = ''
 let list = ''
 let x = window.matchMedia('(max-height: 550px)')
-const loop = document.getElementById('loopVideo')
-const loopContainer = document.getElementById('loop')
+const loop = document.querySelector('#loopVideo')
+const loopContainer = document.querySelector('#loop')
 
 const videoHolder = document.querySelector('#videoHolder')
 const mainButtons = document.querySelector('#mainButtons')
