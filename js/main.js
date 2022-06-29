@@ -87,38 +87,11 @@ function checkSpeed() {
         Mbps +
         ' Mbps\n'
     )
-    // if (Mbps <= 15) {
-    //   videoloop = document.createElement('video')
-    //   videoloop.src = 'assets/loop_C.mp4'
-    //   videoloop.muted = true
-
-    //   videoloop.setAttribute('poster', '')
-    //   videoloop.controls = false
-    //   videoloop.autoplay = 'true'
-
-    //   videoloop.style.zIndex = '1'
-
-    //   loopContainer.appendChild(videoloop)
-    //   // loop.setAttribute('src', 'assets/loop_C.mp4')
-    //   console.log('loop_c' + Mbps)
-    // } else {
-    //   videoloop = document.createElement('video')
-    //   videoloop.src = 'assets/loop.mp4'
-
-    //   videoloop.muted = true
-    //   videoloop.playsinline = true
-
-    //   videoloop.poster = true
-    //   videoloop.setAttribute('id', 'loopVideo')
-    //   videoloop.controls = false
-    //   videoloop.autoplay = 'true'
-
-    //   videoloop.style.zIndex = '1'
-    //   videoloop.play()
-    //   loopContainer.appendChild(videoloop)
-    //   // loop.setAttribute('src', 'assets/loop.mp4')
-    //   console.log('loop' + Mbps)
-    // }
+    if (Mbps <= 15) {
+      loop.src = '/assets/loop_C.mp4'
+    } else {
+      loop.src = '/assets/loop.mp4'
+    }
   }
 }
 checkSpeed()
@@ -176,11 +149,10 @@ function createVideos(source1, source2, source3) {
   if (source1) {
     video1 = document.createElement('video')
     video1.src = source1
-    video1.setAttribute('muted', '')
-    video1.setAttribute('playsinline', '')
-    video1.setAttribute('poster', '')
+    video1.muted = true
+    video1.setAttribute('playsinline', 'playsinline')
     video1.controls = false
-    video1.autoplay = 'true'
+    video1.autoplay = true
     video1.classList.add('video')
     video1.style.zIndex = '-2'
     video1.pause()
@@ -190,11 +162,11 @@ function createVideos(source1, source2, source3) {
     video2 = document.createElement('video')
     video2.src = source2
     video2.loop = true
-    video2.setAttribute('muted', '')
-    video2.setAttribute('playsinline', '')
-    video2.setAttribute('poster', '')
+    video2.muted = true
+    video2.setAttribute('playsinline', 'playsinline')
+
     video2.controls = false
-    video2.autoplay = 'true'
+    video2.autoplay = true
     video2.classList.add('video')
     video2.style.zIndex = '-3'
     video2.pause()
@@ -203,10 +175,9 @@ function createVideos(source1, source2, source3) {
   if (source3) {
     video3 = document.createElement('video')
     video3.src = source3
-    video3.setAttribute('muted', '')
-    video3.autoplay = 'true'
-    video3.setAttribute('playsinline', '')
-    video3.setAttribute('poster', '')
+    video3.muted = true
+    video3.autoplay = true
+    video3.setAttribute('playsinline', 'playsinline')
     video3.controls = false
     video3.classList.add('video')
     video3.style.zIndex = '-4'
