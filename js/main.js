@@ -961,15 +961,13 @@ maximumU_button.addEventListener('click', function (e) {
         loader.classList.remove('show')
         loader.classList.add('short-vanish')
         loader.style.zIndex = '-200'
-
         clearInterval(clearcheck)
-
         loop.classList.add('short-vanish')
         setTimeout(() => {
           video1.play()
           video1.addEventListener('ended', () => {
-            animations()
             InterpolateVideo(loop, video1, video2)
+            animations()
             HideShowCont()
           })
         }, 1000)
