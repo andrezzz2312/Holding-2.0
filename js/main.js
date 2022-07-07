@@ -550,7 +550,7 @@ compactFP_button.addEventListener('click', function (e) {
           loader.style.zIndex = '200'
           loader.classList.add('show')
         }
-      }, 1000)
+      }, 2000)
 
       if (video1check && video2check && video3check) {
         loader.classList.remove('show')
@@ -650,7 +650,7 @@ intuitiveH_button.addEventListener('click', function (e) {
           loader.style.zIndex = '200'
           loader.classList.add('show')
         }
-      }, 1000)
+      }, 2000)
 
       if (video1check && video2check && video3check) {
         loader.classList.remove('show')
@@ -753,7 +753,7 @@ easyC_button.addEventListener('click', function (e) {
           loader.style.zIndex = '200'
           loader.classList.add('show')
         }
-      }, 1000)
+      }, 2000)
 
       if (video1check && video2check && video3check) {
         loader.classList.remove('show')
@@ -852,7 +852,7 @@ flexibleI_button.addEventListener('click', function (e) {
           loader.style.zIndex = '200'
           loader.classList.add('show')
         }
-      }, 1000)
+      }, 2000)
 
       if (video1check && video2check && video3check) {
         loader.classList.remove('show')
@@ -955,7 +955,7 @@ maximumU_button.addEventListener('click', function (e) {
           loader.style.zIndex = '200'
           loader.classList.add('show')
         }
-      }, 1000)
+      }, 2000)
 
       if (video1check && video2check && video3check) {
         loader.classList.remove('show')
@@ -1040,7 +1040,7 @@ quickS_button.addEventListener('click', function (e) {
           loader.style.zIndex = '200'
           loader.classList.add('show')
         }
-      }, 1000)
+      }, 2000)
 
       if (video2check) {
         loader.classList.remove('show')
