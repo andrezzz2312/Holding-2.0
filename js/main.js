@@ -87,7 +87,7 @@ function checkSpeed() {
         Mbps +
         ' Mbps\n'
     )
-    if (Mbps <= 15) {
+    if (Mbps <= 50) {
       loop.src = '/assets/loop_C.mp4'
     } else {
       loop.src = '/assets/loop.mp4'
@@ -488,7 +488,7 @@ fullscreen_button.addEventListener('click', function (e) {
 compactFP_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 15) {
+  if (Mbps <= 50) {
     createVideos(
       'assets/compactFP/compactFP_C1.mp4',
       'assets/compactFP/compactFP_C2.mp4',
@@ -575,7 +575,7 @@ compactFP_button.addEventListener('click', function (e) {
 intuitiveH_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 15) {
+  if (Mbps <= 50) {
     createVideos(
       'assets/intuitiveH/intuitiveH_C1.mp4',
       'assets/intuitiveH/intuitiveH_C2.mp4',
@@ -676,7 +676,7 @@ intuitiveH_button.addEventListener('click', function (e) {
 easyC_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 15) {
+  if (Mbps <= 50) {
     createVideos(
       'assets/easyC/easyC_C1.mp4',
       'assets/easyC/easyC_C2.mp4',
@@ -779,7 +779,7 @@ easyC_button.addEventListener('click', function (e) {
 flexibleI_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 15) {
+  if (Mbps <= 50) {
     createVideos(
       'assets/flexibleI/flexibleI_C1.mp4',
       'assets/flexibleI/flexibleI_C2.mp4',
@@ -878,7 +878,7 @@ flexibleI_button.addEventListener('click', function (e) {
 maximumU_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 15) {
+  if (Mbps <= 50) {
     createVideos(
       'assets/maximumU/maximumU_C1.mp4',
       'assets/maximumU/maximumU_C2.mp4',
@@ -979,7 +979,7 @@ maximumU_button.addEventListener('click', function (e) {
 quickS_button.addEventListener('click', function (e) {
   HideShowMainButtons()
   quickS = true
-  if (Mbps <= 15) {
+  if (Mbps <= 50) {
     createVideos(null, 'assets/quickS/quickS_C.mp4', null)
   } else {
     createVideos(null, 'assets/quickS/quickS.mp4', null)
