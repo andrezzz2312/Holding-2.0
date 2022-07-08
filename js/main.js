@@ -89,13 +89,13 @@ function checkSpeed() {
     if (Mbps <= 30) {
       isHD = false
       loop.src = '/assets/loop_C.mp4'
-      quality.textContent = 'HD quality'
+      quality.textContent = 'HD'
     } else {
       isHD = true
       loop.src = '/assets/loop.mp4'
-      quality.textContent = 'SD quality'      
+      quality.textContent = 'SD'      
     }
-    console.log(isHD);
+   
   }
 }
 checkSpeed()
@@ -337,7 +337,7 @@ function backButtonFunctionQuickS() {
 }
 
 function createBackButton() {
-  console.log(quickS)
+  
   const centerContainerMade = document.createElement('div')
   centerContainerMade.classList.add('centerContainer')
   centerContainerMade.setAttribute('id', 'centerContainer_backButton')
@@ -479,12 +479,12 @@ window.addEventListener('resize', function () {
 
 quality_button.addEventListener('click',function(e){
 isHD = !isHD
-console.log(isHD);
+
 if (isHD) {
-  quality.textContent = 'SD quality'
+  quality.textContent = 'SD'
 }
 else {
-  quality.textContent = 'HD quality'
+  quality.textContent = 'HD'
 }
 })
 
