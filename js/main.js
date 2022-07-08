@@ -39,6 +39,8 @@ const contract = document.querySelector('#contract')
 const close = document.querySelector('#close')
 const alertdiv = document.querySelector('.alertdiv')
 const modalalert = document.querySelector('.modalalert')
+const quality = document.querySelector('#quality_button')
+let isHD = false
 let details = navigator.userAgent
 let regexp = /android|iphone|kindle|ipad/i
 let ios = /iphone|ipad/i
@@ -79,18 +81,21 @@ function checkSpeed() {
     Mbps = (Kbps / 1024).toFixed(2)
     console.log(
       'Your connection speed is: \n' +
-        Bps +
-        ' bps\n' +
-        Kbps +
+       Kbps +
         ' kbps\n' +
         Mbps +
         ' Mbps\n'
     )
-    if (Mbps <= 50) {
+    if (Mbps <= 30) {
+      isHD = false
       loop.src = '/assets/loop_C.mp4'
+      quality.textContent = 'HD quality'
     } else {
+      isHD = true
       loop.src = '/assets/loop.mp4'
+      quality.textContent = 'SD quality'      
     }
+    console.log(isHD);
   }
 }
 checkSpeed()
@@ -106,6 +111,7 @@ if (!isMobileDevice) {
 if (isMac) {
   alertdiv.style.display = 'flex'
 }
+
 // Set which videos are going to swap
 function InterpolateVideo(videoToPause, videoToVanish, videoToPlay) {
   videoToPause.pause()
@@ -470,6 +476,18 @@ window.addEventListener('resize', function () {
 })
 
 ////////// Event Listeners for the main buttons //////////
+
+quality_button.addEventListener('click',function(e){
+isHD = !isHD
+console.log(isHD);
+if (isHD) {
+  quality.textContent = 'SD quality'
+}
+else {
+  quality.textContent = 'HD quality'
+}
+})
+
 fullscreen_button.addEventListener('click', function (e) {
   expand.classList.toggle('disabledb')
   contract.classList.toggle('disabledb')
@@ -487,7 +505,7 @@ fullscreen_button.addEventListener('click', function (e) {
 compactFP_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 50) {
+  if (isHD === false) {
     createVideos(
       'assets/compactFP/compactFP_C1.mp4',
       'assets/compactFP/compactFP_C2.mp4',
@@ -574,7 +592,7 @@ compactFP_button.addEventListener('click', function (e) {
 intuitiveH_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 50) {
+  if (isHD === false) {
     createVideos(
       'assets/intuitiveH/intuitiveH_C1.mp4',
       'assets/intuitiveH/intuitiveH_C2.mp4',
@@ -675,7 +693,7 @@ intuitiveH_button.addEventListener('click', function (e) {
 easyC_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 50) {
+  if (isHD === false) {
     createVideos(
       'assets/easyC/easyC_C1.mp4',
       'assets/easyC/easyC_C2.mp4',
@@ -778,7 +796,7 @@ easyC_button.addEventListener('click', function (e) {
 flexibleI_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 50) {
+  if (isHD === false) {
     createVideos(
       'assets/flexibleI/flexibleI_C1.mp4',
       'assets/flexibleI/flexibleI_C2.mp4',
@@ -877,7 +895,7 @@ flexibleI_button.addEventListener('click', function (e) {
 maximumU_button.addEventListener('click', function (e) {
   HideShowMainButtons()
 
-  if (Mbps <= 50) {
+  if (isHD === false) {
     createVideos(
       'assets/maximumU/maximumU_C1.mp4',
       'assets/maximumU/maximumU_C2.mp4',
@@ -978,7 +996,7 @@ maximumU_button.addEventListener('click', function (e) {
 quickS_button.addEventListener('click', function (e) {
   HideShowMainButtons()
   quickS = true
-  if (Mbps <= 50) {
+  if (isHD === false) {
     createVideos(null, 'assets/quickS/quickS_C.mp4', null)
   } else {
     createVideos(null, 'assets/quickS/quickS.mp4', null)

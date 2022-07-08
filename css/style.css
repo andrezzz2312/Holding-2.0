@@ -203,6 +203,11 @@ a {
   right: 79.5%;
   top: 82.7%;
 }
+#quality_button{
+  right: 3%;
+  bottom: 3%;
+  font-weight: bold;
+}
 #test {
   left: 8%;
   top: 50%;
