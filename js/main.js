@@ -89,11 +89,11 @@ function checkSpeed() {
     if (Mbps <= 30) {
       isHD = false
       loop.src = '/assets/loop_C.mp4'
-      quality.textContent = 'HD'
+      quality.textContent = 'SD'
     } else {
       isHD = true
       loop.src = '/assets/loop.mp4'
-      quality.textContent = 'SD'      
+      quality.textContent = 'HD'      
     }
    
   }
@@ -481,10 +481,10 @@ quality_button.addEventListener('click',function(e){
 isHD = !isHD
 
 if (isHD) {
-  quality.textContent = 'SD'
+  quality.textContent = 'HD'
 }
 else {
-  quality.textContent = 'HD'
+  quality.textContent = 'SD'
 }
 })
 
