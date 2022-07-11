@@ -296,6 +296,7 @@ function setFontSizes() {
   } - 320px) / (1440 - 320)))`
 
   viewR_button.style.fontSize = fontvarViewR
+  quality.style.fontSize = fontvarViewR
 }
 
 function backButtonFunction() {

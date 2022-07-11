@@ -47,23 +47,6 @@ body {
   width: 100%;
 }
 
-.viewR_a {
-  width: max-content;
-  position: relative;
-  height: auto;
-  border: none;
-  color: white;
-  background-color: #4c4c4c;
-  cursor: pointer;
-  z-index: 2;
-  overflow: hidden;
-  padding: 0.8% 0.8%;
-  margin-bottom: 1rem;
-  font-size: calc(5px + (17 - 5) * ((100vw - 320px) / (1440 - 320)));
-  pointer-events: all;
-  border-radius: 1vh;
-  animation: morph 2s ease-in-out infinite;
-}
 
 .centerContainer {
   position: absolute;
@@ -203,28 +186,50 @@ a {
   right: 79.5%;
   top: 82.7%;
 }
+
+
+
 #quality_button{    
+  width: max-content; 
   position: absolute;
+  right: 0;
+  bottom: 0;
+  height: auto;
   border: none; 
   color: white; 
+  background-color: #4c4c4c;
   cursor: pointer;
   z-index: 2;
   overflow: hidden;
+  padding: 0.8% 0.8%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  animation: morph 2s ease-in-out infinite;
-  right: 0;
-  bottom: 0;
-  margin-bottom: 1rem;
-  padding: 0.5% 0.8%;
-  font-size: calc(5px + (17 - 5) * ((100vw - 320px) / (1440 - 320)));
-  border-radius: 1vh;
-  font-weight: bold;
-  background-color: #4c4c4c;
-  width: max-content; 
-  height: auto;  
+  margin-bottom: 1rem;  
+   font-weight: bold;
+  animation: morph 2s ease-in-out infinite; 
+  pointer-events: all;
+  border-radius: 1vh;   
 }
+
+.viewR_a {
+  width: max-content;
+  position: relative;
+  height: auto;
+  border: none;
+  color: white;
+  background-color: #4c4c4c;
+  cursor: pointer;
+  z-index: 2;
+  overflow: hidden;
+  padding: 0.8% 0.8%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 1rem; 
+  pointer-events: all;
+  border-radius: 1vh;
+  animation: morph 2s ease-in-out infinite;
+}
+
 #test {
-  left: 8%;
+    left: 8%;
   top: 50%;
 }
 .viewR_container {
